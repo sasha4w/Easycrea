@@ -7,7 +7,7 @@ namespace App\Controller;
 use App\Helper\HTTP;
 use App\Model\Deck;
 
-class AvatarController extends Controller
+class DeckController extends Controller
 {
     /**
      * Page d'accueil pour lister tous les decks.

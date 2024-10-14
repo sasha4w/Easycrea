@@ -7,7 +7,7 @@ namespace App\Controller;
 use App\Helper\HTTP;
 use App\Model\Administrateur;
 
-class AvatarController extends Controller
+class AdministrateurController extends Controller
 {
     /**
      * Page d'accueil pour lister tous les administrateurs.
