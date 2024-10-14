@@ -1,0 +1,21 @@
+# Ignorer les dossiers contenant des fichiers sensibles
+/src/_database/
+/src/Storage/
+
+# Ignorer les fichiers de configuration ou sensibles
+.htaccess
+.env
+
+# Ignorer des fichiers générés automatiquement par le système ou les IDE
+*.log
+*.tmp
+*.DS_Store
+*.bak
+
+# Ignorer les fichiers cachés ou temporaires des IDE
+.vscode/
+.idea/
+
+# Ne pas ignorer certains fichiers dans le dossier public
+!/public/index.php
+/public/assets/
