@@ -5,6 +5,9 @@
   Constantes de configuration générales.
   -----------------------------------------------
 */
+if (session_status() === PHP_SESSION_NONE) {
+  session_start();
+}
 
 // On vient charger les fichiers des constantes de configuration pour la base
 // Si le projet ne nécéssite pas de base, alors ces fichiers peuvent rester vide.

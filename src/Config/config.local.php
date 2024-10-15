@@ -2,6 +2,9 @@
 /*
   Fichier : src/config/config.local.php
 */
+if (session_status() === PHP_SESSION_NONE) {
+  session_start();
+}
 
 /**
  * le DSN de la base

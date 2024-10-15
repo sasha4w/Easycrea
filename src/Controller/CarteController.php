@@ -5,6 +5,7 @@ declare(strict_types=1); // strict mode
 namespace App\Controller;
 
 use App\Helper\HTTP;
+use App\Helper\Security;
 use App\Model\Carte;
 
 class CarteController extends Controller

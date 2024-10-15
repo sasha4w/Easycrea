@@ -5,7 +5,9 @@ declare(strict_types=1); // strict mode
 namespace App\Controller;
 
 use App\Helper\HTTP;
+use App\Helper\Security;
 use App\Model\Createur;
+use DateTime;
 
 class CreateurController extends Controller
 {
@@ -34,33 +36,47 @@ class CreateurController extends Controller
         if ($this->isGetMethod()) {
             $this->display('createurs/create.html.twig');
         } else {
+            // if (!Security::verifyCsrfToken($_POST['csrf_token'] ?? '')) {
+            //     Security::handleInvalidCsrfToken();
+            // }
             // dd($_POST);
-            // 1. préparer le nom du fichier (le nom original est modifié)
-            $filename = '';
-            // traiter l'éventuelle image de l'createur
-            if (!empty($_FILES['illustration']) && $_FILES['illustration']['type'] == 'image/webp') {
-                // récupérer le nom et emplacement du fichier dans sa zone temporaire
-                $source = $_FILES['illustration']['tmp_name'];
-                // récupérer le nom originel du fichier
-                $filename = $_FILES['illustration']['name'];
-                // ajout d'un suffixe unique
-                // récupérer séparément le nom du fichier et son extension
-                $filename_name = pathinfo($filename, PATHINFO_FILENAME);
-                $filename_extension = pathinfo($filename, PATHINFO_EXTENSION);
-                // produire un suffixe unique
-                $suffix = uniqid();
-                $filename = $filename_name . '_' . $suffix . '.' . $filename_extension;
-                // construire le nom et l'emplacement du fichier de destination
-                $destination = APP_ASSETS_DIRECTORY . 'image' . DS . 'createur' . DS . $filename;
-                // placer le fichier dans son dossier cible (le fichier de la zone temporaire est effacé)
-                move_uploaded_file($source, $destination);
+            // Récupérer et nettoyer les données du formulaire
+            $nom_createur = trim($_POST['nom_createur']);
+            $ad_mail_createur = filter_var(trim($_POST['ad_mail_createur']), FILTER_SANITIZE_EMAIL);
+            $mdp_createur = trim($_POST['mdp_createur']);
+            $genre = trim($_POST['genre']);
+            $ddn = trim($_POST['ddn']);
+
+            // Valider l'email
+            if (!filter_var($ad_mail_createur, FILTER_VALIDATE_EMAIL)) {
+                // Afficher un message d'erreur ou rediriger
+                die('Erreur: email non valide.');
             }
-            // 2. exécuter la requête d'insertion
+
+            // Vérifier si les champs obligatoires sont présents
+            if (empty($nom_createur) || empty($ad_mail_createur) || empty($mdp_createur) || empty($genre) || empty($ddn)) {
+                $error = 'Tous les champs obligatoires doivent être remplis.';
+                return $this->display('createurs/create.html.twig', compact('error'));
+            }
+            $validGenres = ['Homme', 'Femme', 'Autres'];
+            if (!in_array($genre, $validGenres)) {
+                $error = 'Tous les champs obligatoires doivent être remplis.';
+                return $this->display('createurs/create.html.twig', compact('error'));
+            }
+            if (!DateTime::createFromFormat('Y-m-d', $ddn)) {
+                $error = 'Tous les champs obligatoires doivent être remplis.';
+                return $this->display('createurs/create.html.twig', compact('error'));
+            }            
+            // Hacher le mot de passe avant de l'enregistrer
+            $hashedPassword = password_hash($mdp_createur, PASSWORD_BCRYPT);
+
+            // Insérer les données dans la base de données
             Createur::getInstance()->create([
-                'email' => trim($_POST['email']),
-                'password' => trim($_POST['password']),
-                'display_name' => trim($_POST['display_name']),
-                'illustration' => $filename,
+                'nom_createur' => $nom_createur,
+                'ad_mail_createur' => $ad_mail_createur,
+                'mdp_createur' => $hashedPassword,
+                'genre' => $genre,
+                'ddn' => $ddn,
             ]);
             HTTP::redirect('/');
         }
@@ -102,7 +118,7 @@ class CreateurController extends Controller
             // 2. Exécuter la requête de mise à jour dans la base de données
             Createur::getInstance()->update($id, [
                 'email' => trim($_POST['email']),
-                'password' => trim($_POST['password']),
+                'mdp_createur' => trim($_POST['mdp_createur']),
                 'display_name' => trim($_POST['display_name']),
                 'illustration' => $filename, // utilise soit l'image existante, soit la nouvelle
             ]);
