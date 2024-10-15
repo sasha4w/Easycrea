@@ -88,4 +88,9 @@ class Controller
         header('Content-Type: application/json');
         return print(json_encode($response));
     }
+    public function accueil()
+    {
+        // dans les vues TWIG, on peut utiliser la variable administrateurs
+        $this->display('/index.html.twig');
+    }
 }
