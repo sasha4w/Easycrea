@@ -1,5 +1,5 @@
 {% extends 'layout.html.twig' %}
-{% block title %}Ajouter - {{ parent }}{% endblock %}
+{% block title %}Inscription d'un administrateur - {{ parent }}{% endblock %}
 {% block content %}
  <main class="container">
     <h1>Ajouter un avatar</h1>
@@ -15,11 +15,6 @@
       <div class="mb-3">
         <label class="form-label">Nom à afficher <span class="required-info">*</span> :</label>
         <input name="display_name" type="text" class="form-control w-50" required>
-      </div>
-      <div class="mb-3">
-        <label class="form-label">Image de l'avatar :</label>
-        <input name="illustration" type="file" class="form-control">
-        <img src="" id="illustration_preview" class="d-none img-fluid">
       </div>
       <p class="text-danger fs-6">Les données marquées d'une astérisque sont obligatoires.</p>
       <button type="submit" class="btn btn-primary">Ajouter ce nouvel avatar</button>

@@ -1,18 +1,17 @@
 {% extends 'layout.html.twig' %}
-{% block title %}Liste - {{parent()}}{% endblock %}
+{% block title %}Accueil créateur - {{parent()}}{% endblock %}
 {% block content %}
   <div class="container">
-    {# {% if administrateurs %} #}
-    <h1 class="display-1">Inscription ou Connexion</h1>
-
-    <a href="{{ url('/createurs/ajouter') }}" class="btn btn-primary m-4">Inscription</a>
-    <a href="{{ url('/createurs/login') }}" class="btn btn-primary m-4">Connexion</a>
+    {% if isLoggedIn %}
+      {# Si l'utilisateur est connecté, afficher un message de bienvenue #}
+      <h1 class="display-1">Bienvenue, {{ ad_mail_createur }} !</h1>
+      <a href="{{ url('/createurs/deconnexion') }}" class="btn btn-danger m-4">Déconnexion</a>
+    {% else %}
+      {# Si l'utilisateur n'est pas connecté, afficher les options d'inscription et de connexion #}
+      <h1 class="display-1">Inscription ou Connexion</h1>
+      <a href="{{ url('/createurs/ajouter') }}" class="btn btn-primary m-4">Inscription</a>
+      <a href="{{ url('/createurs/connexion') }}" class="btn btn-primary m-4">Connexion</a>
+    {% endif %}
     <a href="/ReignsWebapp/public" class="btn btn-primary btn-lg">Revenir sur la page d'accueil</a>
-
-
-{# 
-    {% endif %} #}
-
   </div>
-
 {% endblock %}
