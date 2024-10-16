@@ -5,6 +5,10 @@
     {% if isLoggedIn %}
       {# Si l'utilisateur est connecté, afficher un message de bienvenue #}
       <h1 class="display-1">Bienvenue, {{ nom_createur }} !</h1>
+      <div class="container">
+        <h2>Gestion de mes créations</h2>
+              <a href="{{ url('/cartes') }}" class="btn btn-primary m-4">Mes cartes</a>              
+      </div>      
       <a href="{{ url('/createurs/deconnexion') }}" class="btn btn-danger m-4">Déconnexion</a>
     {% else %}
       {# Si l'utilisateur n'est pas connecté, afficher les options d'inscription et de connexion #}
