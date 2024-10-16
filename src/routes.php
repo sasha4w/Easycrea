@@ -61,6 +61,7 @@ return [
 
 
 
+
     /////////////////////////////////////////////////////
 
     // afficher le formulaire d'édition un avatar existant

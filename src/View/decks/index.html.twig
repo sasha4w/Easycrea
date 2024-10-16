@@ -12,15 +12,16 @@
 
     {% for deck in decks %}
     <section class="row mb-3 bg-light">
-      <div class="col-md-2 position-relative">
-        <div class="avatar-operations">
-          <a href="{{ url('/decks/éditer/' ~  deck.id ) }}" class="text-warning">éditer</a>
-          <a href="{{ url('/decks/effacer/' ~  deck.id ) }}" class="text-danger">effacer</a>
-        </div>
-      </div> 
       <div class="col-md-8">
         <h2>{{ deck.titre_deck }}</h2>
         <p class="m-0">{{ deck.nb_cartes }}</p>
+        <p class="m-0">{{ deck.date_fin_deck }}</p>        
+      <div class="col-md-2 position-relative">
+        <div class="deck-operations">
+          <a href="{{ url('/decks/éditer/' ~  deck.id_deck ) }}" class="text-warning">éditer</a>
+          <a href="{{ url('/decks/effacer/' ~  deck.id_deck ) }}" class="text-danger">effacer</a>
+        </div>
+      </div> 
         {# <p class="m-0 text-muted fw-lighter ms-4">créer le
           {{ avatar.created_at|date( 'd/m/Y' ) }}  
           à {{ avatar.created_at|date( 'H:i' ) }}

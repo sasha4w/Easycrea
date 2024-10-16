@@ -35,38 +35,38 @@ class DeckController extends Controller
      */
     public function create()
     {
+        if (!isset($_SESSION['id_administrateur'])) {
+            HTTP::redirect('/administrateur/connexion');  // Rediriger vers la page de connexion si pas authentifié
+            return;
+        }
         if ($this->isGetMethod()) {
             $this->display('decks/create.html.twig');
         } else {
-            // dd($_POST);
-            // 1. préparer le nom du fichier (le nom original est modifié)
-            $filename = '';
-            // traiter l'éventuelle image de l'deck
-            if (!empty($_FILES['illustration']) && $_FILES['illustration']['type'] == 'image/webp') {
-                // récupérer le nom et emplacement du fichier dans sa zone temporaire
-                $source = $_FILES['illustration']['tmp_name'];
-                // récupérer le nom originel du fichier
-                $filename = $_FILES['illustration']['name'];
-                // ajout d'un suffixe unique
-                // récupérer séparément le nom du fichier et son extension
-                $filename_name = pathinfo($filename, PATHINFO_FILENAME);
-                $filename_extension = pathinfo($filename, PATHINFO_EXTENSION);
-                // produire un suffixe unique
-                $suffix = uniqid();
-                $filename = $filename_name . '_' . $suffix . '.' . $filename_extension;
-                // construire le nom et l'emplacement du fichier de destination
-                $destination = APP_ASSETS_DIRECTORY . 'image' . DS . 'deck' . DS . $filename;
-                // placer le fichier dans son dossier cible (le fichier de la zone temporaire est effacé)
-                move_uploaded_file($source, $destination);
+            $titre_deck = $_POST['titre_deck'];
+            $date_fin_deck = $_POST['date_fin_deck'];
+            $nb_cartes = $_POST['nb_cartes'];
+            $id_administrateur = $_SESSION['id_administrateur'];
+            // Vérifier si les champs obligatoires sont présents
+            if (empty($nb_cartes) || empty($date_fin_deck) || empty($titre_deck)) {
+                $error = 'Tous les champs obligatoires doivent être remplis.';
+                return $this->display('decks/create.html.twig', compact('error'));
             }
+            if (!DateTime::createFromFormat('Y-m-d', $date_fin_deck)) {
+                $error = 'Tous les champs obligatoires doivent être remplis.';
+                return $this->display('decks/create.html.twig', compact('error'));
+            }
+            if (!is_numeric($nb_cartes) || intval($nb_cartes) <= 0) {
+                $error = 'Le nombre de cartes doit être un nombre entier positif.';
+                return $this->display('decks/create.html.twig', compact('error'));
+            } 
             // 2. exécuter la requête d'insertion
             Deck::getInstance()->create([
-                'email' => trim($_POST['email']),
-                'password' => trim($_POST['password']),
-                'display_name' => trim($_POST['display_name']),
-                'illustration' => $filename,
+                'titre_deck' => $titre_deck,
+                'date_fin_deck' => $date_fin_deck,
+                'nb_cartes' => intval($nb_cartes),
+                'id_administrateur' => $id_administrateur,
             ]);
-            HTTP::redirect('/');
+            HTTP::redirect('/decks');
         }
     }
     public function edit(int|string $id)
@@ -115,12 +115,6 @@ class DeckController extends Controller
             HTTP::redirect('/');
         }
     }
-    
-    /**
-     * Effacer un deck.
-     * @route [get] /decks/effacer/{id}
-     *
-     */
     public function delete(
         int|string $id
     ) {
@@ -133,22 +127,14 @@ class DeckController extends Controller
     // 3. Vérifier si l'deck existe
     if (!$deck) {
         // Si l'deck n'existe pas, rediriger ou afficher un message d'erreur
-        HTTP::redirect('/');
+        HTTP::redirect('/decks');
         return;
-    }
-
-    // 4. Supprimer l'image de l'deck s'il en a une
-    if (!empty($deck['illustration'])) {
-        $imagePath = APP_ASSETS_DIRECTORY . 'image' . DS . 'deck' . DS . $deck['illustration'];
-        if (file_exists($imagePath)) {
-            unlink($imagePath); // Supprimer l'image du serveur
-        }
     }
 
     // 5. Supprimer l'deck de la base de données
     Deck::getInstance()->delete($id);
 
     // 6. Rediriger vers la page d'accueil après la suppression
-    HTTP::redirect('/');
+    HTTP::redirect('/decks');
     }
 }

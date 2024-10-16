@@ -21,9 +21,6 @@ class CreateurController extends Controller
         // Vérifier si l'utilisateur (créateur) est connecté
         $isLoggedIn = isset($_SESSION['ad_mail_createur']);
         $nom_createur = $isLoggedIn ? $_SESSION['nom_createur'] : null;
-        echo '<pre>'; // Pour un affichage plus lisible
-        var_dump($_SESSION);
-        echo '</pre>';
         $this->display('createurs/index.html.twig', compact('isLoggedIn','nom_createur'));
     }
     
