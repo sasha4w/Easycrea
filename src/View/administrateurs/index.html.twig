@@ -6,6 +6,11 @@
       {# Si l'utilisateur est connecté, afficher un message de bienvenue #}
       <h1 class="display-1">Bienvenue, {{ ad_mail_admin }} !</h1>
       <a href="{{ url('/administrateurs/deconnexion') }}" class="btn btn-danger m-4">Déconnexion</a>
+      <div class="container">
+        <h2>Gestion de mes créations</h2>
+              <a href="{{ url('/decks') }}" class="btn btn-primary m-4">Mes decks</a>
+              <a href="{{ url('/cartes') }}" class="btn btn-primary m-4">Mes cartes</a>              
+      </div>
     {% else %}
       {# Si l'utilisateur n'est pas connecté, afficher les options d'inscription et de connexion #}
       <h1 class="display-1">Inscription ou Connexion</h1>

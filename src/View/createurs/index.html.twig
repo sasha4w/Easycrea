@@ -4,7 +4,7 @@
   <div class="container">
     {% if isLoggedIn %}
       {# Si l'utilisateur est connecté, afficher un message de bienvenue #}
-      <h1 class="display-1">Bienvenue, {{ ad_mail_createur }} !</h1>
+      <h1 class="display-1">Bienvenue, {{ nom_createur }} !</h1>
       <a href="{{ url('/createurs/deconnexion') }}" class="btn btn-danger m-4">Déconnexion</a>
     {% else %}
       {# Si l'utilisateur n'est pas connecté, afficher les options d'inscription et de connexion #}

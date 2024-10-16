@@ -20,6 +20,7 @@ class AdministrateurController extends Controller
         // Vérifier si l'utilisateur (créateur) est connecté
         $isLoggedIn = isset($_SESSION['ad_mail_admin']);
         $ad_mail_admin = $isLoggedIn ? $_SESSION['ad_mail_admin'] : null;
+
         $this->display('administrateurs/index.html.twig', compact('isLoggedIn','ad_mail_admin'));
 
     }
@@ -106,7 +107,8 @@ class AdministrateurController extends Controller
     
             // Si tout est correct, démarrer une session pour l'utilisateur
             $_SESSION['ad_mail_admin'] = $administrateur['ad_mail_admin'];
-                
+            $_SESSION['id_administrateur'] = $administrateur['id_administrateur'];
+    
             // Rediriger vers la page d'accueil ou une autre page
             HTTP::redirect('/administrateurs');
         } 
@@ -120,7 +122,7 @@ class AdministrateurController extends Controller
         }
         
         // Supprimer seulement l'ID et l'email du créateur
-        unset($_SESSION['ad_mail_admin']);
+        unset($_SESSION['ad_mail_admin'], $_SESSION['id_administrateur']);
 
         // Rediriger vers la page d'accueil ou une autre page
         HTTP::redirect('/administrateurs');

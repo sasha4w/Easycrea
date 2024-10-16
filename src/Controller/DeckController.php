@@ -7,6 +7,7 @@ namespace App\Controller;
 use App\Helper\HTTP;
 use App\Helper\Security;
 use App\Model\Deck;
+use DateTime;
 
 class DeckController extends Controller
 {
@@ -17,10 +18,12 @@ class DeckController extends Controller
      */
     public function index()
     {
+        $isLoggedIn = isset($_SESSION['ad_mail_admin']);
+        $ad_mail_admin = $isLoggedIn ? $_SESSION['ad_mail_admin'] : null;
         // récupérer les informations sur les decks
         $decks = Deck::getInstance()->findAll();
         // dans les vues TWIG, on peut utiliser la variable decks
-        $this->display('decks/index.html.twig', compact('decks'));
+        $this->display('decks/index.html.twig', compact('decks', 'isLoggedIn', 'ad_mail_admin'));
     }
 
     /**

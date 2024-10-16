@@ -20,8 +20,11 @@ class CreateurController extends Controller
     {
         // Vérifier si l'utilisateur (créateur) est connecté
         $isLoggedIn = isset($_SESSION['ad_mail_createur']);
-        $ad_mail_createur = $isLoggedIn ? $_SESSION['ad_mail_createur'] : null;
-        $this->display('createurs/index.html.twig', compact('isLoggedIn','ad_mail_createur'));
+        $nom_createur = $isLoggedIn ? $_SESSION['nom_createur'] : null;
+        echo '<pre>'; // Pour un affichage plus lisible
+        var_dump($_SESSION);
+        echo '</pre>';
+        $this->display('createurs/index.html.twig', compact('isLoggedIn','nom_createur'));
     }
     
 
@@ -89,6 +92,7 @@ class CreateurController extends Controller
             $this->display('createurs/login.html.twig');
         } else {
             // Récupérer et nettoyer les données du formulaire
+            $nom_createur = trim($_POST['nom_createur']);
             $ad_mail_createur = filter_var(trim($_POST['ad_mail_createur']), FILTER_SANITIZE_EMAIL);
             $mdp_createur = trim($_POST['mdp_createur']);
     
@@ -99,14 +103,14 @@ class CreateurController extends Controller
             }
     
             // Vérifier si les champs obligatoires sont présents
-            if (empty($ad_mail_createur) || empty($mdp_createur)) {
+            if (empty($ad_mail_createur) || empty($mdp_createur) || empty($nom_createur)) {
                 $error = 'Tous les champs obligatoires doivent être remplis.';
                 return $this->display('createurs/login.html.twig', compact('error'));
             }
     
             // Récupérer le créateur à partir de l'email
             $createur = Createur::getInstance()->findOneBy(['ad_mail_createur' => $ad_mail_createur]);
-    
+
             if (!$createur) {
                 // Si le créateur n'existe pas, afficher une erreur
                 $error = 'Créateur non trouvé.';
@@ -122,7 +126,9 @@ class CreateurController extends Controller
     
             // Si tout est correct, démarrer une session pour l'utilisateur
             $_SESSION['ad_mail_createur'] = $createur['ad_mail_createur'];
-                
+            $_SESSION['nom_createur'] = $createur['nom_createur'];
+            $_SESSION['id_createur'] = $createur['id_createur'];
+
             // Rediriger vers la page d'accueil ou une autre page
             HTTP::redirect('/createurs');
         } 
@@ -136,7 +142,7 @@ class CreateurController extends Controller
         }
         
         // Supprimer seulement l'ID et l'email du créateur
-        unset($_SESSION['id_createur'], $_SESSION['ad_mail_createur']);
+        unset($_SESSION['nom_createur'], $_SESSION['ad_mail_createur'], $_SESSION['id_createur']);
 
         // Rediriger vers la page d'accueil ou une autre page
         HTTP::redirect('/createurs');
