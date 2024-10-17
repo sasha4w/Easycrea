@@ -9,4 +9,44 @@ class Carte extends Model
     use TraitInstance;
 
     protected $tableName = APP_TABLE_PREFIX . 'carte';
+
+    // public function findAllWithDecks(): array
+    // {
+    //     $sql = "
+    //         SELECT *
+    //         FROM " . APP_TABLE_PREFIX . "deck AS deck
+    //         LEFT JOIN {$this->tableName} AS carte ON carte.id_deck = deck.id_deck
+    //     ";
+    
+    //     $sth = $this->query($sql);
+    //     return $sth->fetchAll();
+    // }
+    public function findAllWithDecksCreateur(): array
+    {
+        $sql = "
+            SELECT deck.*, COUNT(carte.id_carte) AS carte_count
+            FROM " . APP_TABLE_PREFIX . "deck AS deck
+            LEFT JOIN {$this->tableName} AS carte ON carte.id_deck = deck.id_deck
+            GROUP BY deck.id_deck
+            HAVING carte_count > 0
+        ";
+    
+        $sth = $this->query($sql);
+        return $sth->fetchAll();
+    }
+    public function findAllWithDecksAdmin(): array
+    {
+        $sql = "
+            SELECT deck.*, COUNT(carte.id_carte) AS carte_count
+            FROM " . APP_TABLE_PREFIX . "deck AS deck
+            LEFT JOIN {$this->tableName} AS carte ON carte.id_deck = deck.id_deck
+            GROUP BY deck.id_deck
+            HAVING carte_count = 0
+        ";
+    
+        $sth = $this->query($sql);
+        return $sth->fetchAll();
+    }
+            
+    
 }

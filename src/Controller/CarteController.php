@@ -20,11 +20,19 @@ class CarteController extends Controller
         $isLoggedInAsAdmin = isset($_SESSION['ad_mail_admin']);
         $isLoggedInAsCreateur = isset($_SESSION['ad_mail_createur']);
         $ad_mail_admin = $isLoggedInAsAdmin ? $_SESSION['ad_mail_admin'] : null;
-        $nom_createur = $isLoggedInAsCreateur ? $_SESSION['nom_createur'] : null;
+        $nom_createur = $isLoggedInAsCreateur ? $_SESSION['nom_createur'] : null;      
         // récupérer les informations sur les cartes
         $cartes = Carte::getInstance()->findAll();
+        if ($isLoggedInAsCreateur) {
+            $decksInfos = Carte::getInstance()->findAllWithDecksCreateur();
+        }
+    
+        // Si l'utilisateur est un administrateur, récupérer les decks sans cartes
+        if ($isLoggedInAsAdmin) {
+            $decksInfos = Carte::getInstance()->findAllWithDecksAdmin();
+        }
         // dans les vues TWIG, on peut utiliser la variable cartes
-        $this->display('cartes/index.html.twig', compact('cartes', 'isLoggedInAsAdmin', 'isLoggedInAsCreateur', 'ad_mail_admin', 'nom_createur'));
+        $this->display('cartes/index.html.twig', compact('decksInfos', 'cartes', 'isLoggedInAsAdmin', 'isLoggedInAsCreateur', 'ad_mail_admin', 'nom_createur'));
     }
 
     /**

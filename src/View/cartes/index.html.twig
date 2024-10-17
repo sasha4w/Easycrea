@@ -9,14 +9,15 @@
       {% else %}
       <h1 class="display-1">Les cartes de {{ nom_createur }} !</h1>
     {% endif %} 
-      {# {% for deck in decks %} #}
-      <div class="col-md-8">
-        <a href="{{ url('/cartes/ajouter') }}" class="btn btn-primary m-4">Créer une carte</a>
-      </div>
-      {# {% endfor %} #}
+      {% for deckInfo in decksInfos %}
+        <div class="col-md-8">
+          <h2>Nom du deck : {{ deckInfo.titre_deck }}</h2>  
+          <a href="{{ url('/cartes/ajouter/' ~ deckInfo.id_deck) }}" class="btn btn-primary m-4">Ajouter une carte à ce deck</a>
+        </div>
+      {% endfor %}
   
     {% if cartes|length == 0  %}
-    <p>Aucun deck n'est enregistré pour le moment.</p>
+    <p>Aucun carte n'est enregistré pour le moment.</p>
     {% endif %}
 
     {% for carte in cartes %}
@@ -29,7 +30,7 @@
       <div class="col-md-2 position-relative">
         <div class="deck-operations">
           <a href="{{ url('/cartes/éditer/' ~  carte.id_carte ) }}" class="text-warning">éditer</a>
-          <a href="{{ url('/cartes/effacer/' ~  deck.id_carte ) }}" class="text-danger">effacer</a>
+          <a href="{{ url('/cartes/effacer/' ~ carte.id_carte ) }}" class="text-danger">effacer</a>
         </div>
       </div> 
         {# <p class="m-0 text-muted fw-lighter ms-4">créer le
