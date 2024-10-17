@@ -47,6 +47,9 @@ class Carte extends Model
         $sth = $this->query($sql);
         return $sth->fetchAll();
     }
-            
+    public function findByDeckAndCreateur(int $id_deck, int $id_createur): ?array
+{
+    return $this->findAllBy(['id_deck' => $id_deck, 'id_createur' => $id_createur]);
+}        
     
 }

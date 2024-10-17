@@ -20,20 +20,44 @@ class CarteController extends Controller
         $isLoggedInAsAdmin = isset($_SESSION['ad_mail_admin']);
         $isLoggedInAsCreateur = isset($_SESSION['ad_mail_createur']);
         $ad_mail_admin = $isLoggedInAsAdmin ? $_SESSION['ad_mail_admin'] : null;
-        $nom_createur = $isLoggedInAsCreateur ? $_SESSION['nom_createur'] : null;      
-        // récupérer les informations sur les cartes
-        $cartes = Carte::getInstance()->findAll();
-        if ($isLoggedInAsCreateur) {
-            $decksInfos = Carte::getInstance()->findAllWithDecksCreateur();
-        }
+        $nom_createur = $isLoggedInAsCreateur ? $_SESSION['nom_createur'] : null;
+        $id_createur = $isLoggedInAsCreateur ? (int)$_SESSION['id_createur'] : null;
+    
+        // Initialiser les variables
+        $decksInfos = [];
+        $cartes = [];  // Initialiser la variable cartes
+        $cartesByDeck = []; // Initialiser la variable cartesByDeck
     
         // Si l'utilisateur est un administrateur, récupérer les decks sans cartes
         if ($isLoggedInAsAdmin) {
             $decksInfos = Carte::getInstance()->findAllWithDecksAdmin();
+            $cartes = Carte::getInstance()->findAll(); // Ici, on récupère toutes les cartes
         }
-        // dans les vues TWIG, on peut utiliser la variable cartes
-        $this->display('cartes/index.html.twig', compact('decksInfos', 'cartes', 'isLoggedInAsAdmin', 'isLoggedInAsCreateur', 'ad_mail_admin', 'nom_createur'));
+    
+        if ($isLoggedInAsCreateur) {
+            // Récupérer les decks pour le créateur
+            $decksInfos = Carte::getInstance()->findAllWithDecksCreateur();
+    
+            // Débogage pour voir le contenu de $decksInfos
+            var_dump($decksInfos); // Pour déboguer
+    
+            foreach ($decksInfos as $deckInfo) {
+                // Vérifier si deckInfo est un objet ou un tableau
+                if (is_object($deckInfo)) {
+                    $deckId = (int)$deckInfo->id_deck; // Forcer le type à int
+                } else {
+                    $deckId = (int)$deckInfo['id_deck']; // Forcer le type à int
+                }
+    
+                // Récupérer les cartes par deck et créateur
+                $cartesByDeck[$deckId] = Carte::getInstance()->findByDeckAndCreateur($deckId, $id_createur);
+            }
+        }
+    
+        // Dans les vues TWIG, on peut utiliser les variables
+        $this->display('cartes/index.html.twig', compact('decksInfos', 'cartesByDeck', 'cartes', 'isLoggedInAsAdmin', 'isLoggedInAsCreateur', 'ad_mail_admin', 'nom_createur'));
     }
+    
 
     /**
      * Afficher le formulaire de saisie d'un nouvel carte ou traiter les
@@ -42,20 +66,70 @@ class CarteController extends Controller
      * @route [post] /cartes/ajouter
      *
      */
-    public function create()
-    {
-        if ($this->isGetMethod()) {
-            $this->display('cartes/create.html.twig');
-        } else {
-            // 2. exécuter la requête d'insertion
-            Carte::getInstance()->create([
-                'texte_carte' => trim($_POST['texte_carte']),
-                'valeur_choix1' => trim($_POST['valeur_choix1']),
-                'valeur_choix2' => trim($_POST['valeur_choix2']),
-            ]);
-            HTTP::redirect('/');
+    public function create($deckId)
+{
+    $deckId = (int) $deckId;
+    $isLoggedInAsAdmin = isset($_SESSION['ad_mail_admin']);
+    $isLoggedInAsCreateur = isset($_SESSION['ad_mail_createur']); 
+
+    // Vérifie si la méthode HTTP est GET pour afficher le formulaire
+    if ($this->isGetMethod()) {
+        $this->display('cartes/create.html.twig', compact('deckId', 'isLoggedInAsAdmin', 'isLoggedInAsCreateur'));
+    } else {
+        // Récupérer et nettoyer les données du formulaire
+        $texte_carte = trim($_POST['texte_carte']);
+        $valeurs_choix1 = trim($_POST['valeurs_choix1']);
+        $valeurs_choix2 = trim($_POST['valeurs_choix2']);
+        $ordre_soumission = trim($_POST['ordre_soumission']);
+        
+        // Initialiser un tableau d'erreurs
+        $errors = [];
+
+        // Valider les champs obligatoires
+        if (empty($texte_carte) || empty($valeurs_choix1) || empty($valeurs_choix2)) {
+            $errors[] = 'Tous les champs obligatoires doivent être remplis.';
         }
+
+        // Vérification de la longueur du texte de la carte
+        if (strlen($texte_carte) < 50 || strlen($texte_carte) > 280) {
+            $errors[] = 'Le texte de la carte doit contenir entre 50 et 280 caractères.';
+        }
+
+        // S'il y a des erreurs, afficher le formulaire avec les messages d'erreur
+        if (!empty($errors)) {
+            $error = implode(' ', $errors); // Joindre les erreurs pour les afficher
+            return $this->display('cartes/create.html.twig', compact('deckId', 'error', 'isLoggedInAsAdmin', 'isLoggedInAsCreateur'));
+        }
+
+        // Préparer les données pour l'insertion
+        $data = [
+            'texte_carte' => $texte_carte,
+            'valeurs_choix1' => $valeurs_choix1,
+            'valeurs_choix2' => $valeurs_choix2,
+            'id_deck' => $deckId, // clé étrangère associée au deck
+            'ordre_soumission' => $ordre_soumission,
+        ];
+
+        // Ajouter les ID créateur ou administrateur si l'utilisateur est connecté
+        if ($isLoggedInAsCreateur) {
+            $id_createur = trim($_SESSION['id_createur']);
+            $data['id_createur'] = $id_createur;
+        }
+
+        if ($isLoggedInAsAdmin) {
+            $id_administrateur = trim($_SESSION['id_administrateur']);
+            $data['id_administrateur'] = $id_administrateur;
+        }
+
+        // Insérer la carte dans la base de données
+        Carte::getInstance()->create($data);
+
+        // Rediriger vers la liste des cartes après l'insertion
+        HTTP::redirect('/cartes');
     }
+}
+
+    
     public function edit(int|string $id)
     {
         // Forcer l'ID à être un entier si nécessaire

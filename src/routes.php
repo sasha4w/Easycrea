@@ -47,9 +47,9 @@ return [
     ['GET', '/cartes', 'carte@index'],
     ['GET', '/cartes/effacer/{id:\d+}', 'carte@delete'],
     // afficher le formulaire d'ajout d'un nouvel avatar
-    ['GET', '/cartes/ajouter', 'carte@create'],
+    ['GET', '/cartes/ajouter/{deckId}', 'carte@create'],
     // enregistrer les données soumises d'un nouvel avatar
-    ['POST', '/cartes/ajouter', 'carte@create'],
+    ['POST', '/cartes/ajouter/{deckId}', 'carte@create'],
 
     // Deck  
     ['GET', '/decks', 'deck@index'],

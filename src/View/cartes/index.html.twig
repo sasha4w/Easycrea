@@ -4,52 +4,88 @@
   <div class="container">
     {% if isLoggedInAsAdmin or isLoggedInAsCreateur %}
       {# Si l'utilisateur est connecté, afficher un message de bienvenue #}
-    {% if ad_mail_admin %}
-      <h1 class="display-1">Les cartes de {{ ad_mail_admin }} !</h1>
+      {% if ad_mail_admin %}
+        <h1 class="display-1">Les cartes de {{ ad_mail_admin }} !</h1>
+        <h2>Les decks à commencer </h2> 
       {% else %}
-      <h1 class="display-1">Les cartes de {{ nom_createur }} !</h1>
-    {% endif %} 
+        <h1 class="display-1">Les cartes de {{ nom_createur }} !</h1>
+        <h2>Les decks à compléter </h2> 
+      {% endif %}
+      
       {% for deckInfo in decksInfos %}
-        <div class="col-md-8">
-          <h2>Nom du deck : {{ deckInfo.titre_deck }}</h2>  
-          <a href="{{ url('/cartes/ajouter/' ~ deckInfo.id_deck) }}" class="btn btn-primary m-4">Ajouter une carte à ce deck</a>
-        </div>
+        <section class="row mb-3 bg-light">
+          <div class="col-md-8">
+            <h2>Nom du deck : {{ deckInfo.titre_deck }}</h2>
+              {% if cartesByDeck[deckInfo.id_deck] is empty %}
+                <a href="{{ url('/cartes/ajouter/' ~ deckInfo.id_deck) }}" class="btn btn-primary m-4">Ajouter une carte à ce deck</a>
+              {% else %}
+                <p class="text-success">Une carte a déjà été ajoutée à ce deck.</p>
+              {% endif %}
+          </div>
+        </section>
       {% endfor %}
-  
-    {% if cartes|length == 0  %}
-    <p>Aucun carte n'est enregistré pour le moment.</p>
-    {% endif %}
+       
 
-    {% for carte in cartes %}
-    <section class="row mb-3 bg-light">
-      <div class="col-md-8">
-        <h2>{{ carte.id_deck }}</h2>
-        <p class="m-0">{{ carte.texte_carte }}</p>
-        <p class="m-0">{{ carte.valeurs_choix1 }}</p>
-        <p class="m-0">{{ carte.valeurs_choix2 }}</p>                        
-      <div class="col-md-2 position-relative">
-        <div class="deck-operations">
-          <a href="{{ url('/cartes/éditer/' ~  carte.id_carte ) }}" class="text-warning">éditer</a>
-          <a href="{{ url('/cartes/effacer/' ~ carte.id_carte ) }}" class="text-danger">effacer</a>
-        </div>
-      </div> 
-        {# <p class="m-0 text-muted fw-lighter ms-4">créer le
-          {{ avatar.created_at|date( 'd/m/Y' ) }}  
-          à {{ avatar.created_at|date( 'H:i' ) }}
-        </p> #}
-      </div>
-    </section>
-    {% endfor %}
-    {% else %}
-      {# Si l'utilisateur n'est pas connecté, afficher les options d'inscription et de connexion #}
-      <h1 class="display-1">Vous ne pouvez pas accéder à cette page</h1>
- 
-    {% endif %}
-    {% if ad_mail_admin %}
-    <a href="{{ url('/administrateurs') }}" class="btn btn-primary btn-lg">Revenir sur la page administrateur</a>
+      <h2>Liste des cartes ajoutées </h2>
+      {% if isLoggedInAsCreateur %}
+        {% for deckInfo in decksInfos %}
+          {% set cartes = cartesByDeck[deckInfo.id_deck] ?? [] %} {# Récupère les cartes pour le deck actuel #}
+          {% if cartes is not empty %}
+            {% for carte in cartes %}
+              <section class="row mb-3 bg-light">
+                <div class="col-md-8">
+                  <h4>Titre du deck : {{ deckInfo.titre_deck }}</h4>
+                  <p class="m-0">Texte de la carte : {{ carte.texte_carte }}</p>
+                  <p class="m-0">Valeurs choix 1 : {{ carte.valeurs_choix1 }}</p>
+                  <p class="m-0">Valeurs choix 2 : {{ carte.valeurs_choix2 }}</p>
+                  <div class="col-md-2 position-relative">
+                    <div class="deck-operations">
+                      {% if isLoggedInAsCreateur %}
+                        <a href="{{ url('/cartes/éditer/' ~ carte.id_carte ) }}" class="text-warning">éditer</a>
+                        <a href="{{ url('/cartes/effacer/' ~ carte.id_carte ) }}" class="text-danger">effacer</a>
+                      {% endif %}
+                    </div>
+                  </div> 
+                </div>
+              </section>
+            {% endfor %}
+          {% else %}
+            <p>Aucune carte trouvée pour le deck : {{ deckInfo.titre_deck }}.</p>
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+      {% if isLoggedInAsAdmin %}
+        {% if cartes is not empty %}
+            {% for carte in cartes %}
+              <section class="row mb-3 bg-light">
+                <div class="col-md-8">
+                  <h4>Titre du deck : {{ deckInfo.titre_deck }}</h4>
+                  <p class="m-0">Texte de la carte : {{ carte.texte_carte }}</p>
+                  <p class="m-0">Valeurs choix 1 : {{ carte.valeurs_choix1 }}</p>
+                  <p class="m-0">Valeurs choix 2 : {{ carte.valeurs_choix2 }}</p>
+                  <div class="col-md-2 position-relative">
+                    <div class="deck-operations">
+                      {% if isLoggedInAsCreateur %}
+                        <a href="{{ url('/cartes/éditer/' ~ carte.id_carte ) }}" class="text-warning">éditer</a>
+                        <a href="{{ url('/cartes/effacer/' ~ carte.id_carte ) }}" class="text-danger">effacer</a>
+                      {% endif %}
+                    </div>
+                  </div> 
+                </div>
+              </section>
+            {% endfor %}
+          {% else %}
+            <p>Aucune carte trouvée</p>
+          {% endif %}
+      {% endif %}
+      {% if ad_mail_admin %}
+        <a href="{{ url('/administrateurs') }}" class="btn btn-primary btn-lg">Revenir sur la page administrateur</a>
       {% else %}
-    <a href="{{ url('/createurs') }}" class="btn btn-primary btn-lg">Revenir sur la page créateur</a>
-    {% endif %}     
+        <a href="{{ url('/createurs') }}" class="btn btn-primary btn-lg">Revenir sur la page créateur</a>
+      {% endif %}     
+      
+    {% else %}
+      <h1 class="display-1">Vous ne pouvez pas accéder à cette page</h1>
+    {% endif %}
   </div>
 {% endblock %}
-
