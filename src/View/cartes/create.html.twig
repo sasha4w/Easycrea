@@ -10,15 +10,15 @@
           <div id="charCount" class="form-text">0/280 caractères</div>
       </div>
       <div class="mb-3">
-        <label class="form-label">Choix 1<span class="required-info">*</span> :</label>
-        <input name="valeurs_choix1" type="number" placeholder="Population" class="form-control w-50" step="1" required>
-        <input name="valeurs_choix2" type="number" placeholder="Finances" class="form-control w-50" step="1" required>        
+          <label class="form-label">Choix 1<span class="required-info">*</span> :</label>
+          <input name="valeurs_choix1_population" type="number" placeholder="Population" class="form-control w-50" step="1" required>
+          <input name="valeurs_choix1_finances" type="number" placeholder="Finances" class="form-control w-50" step="1" required>        
       </div>
-      {# <div class="mb-3">
-        <label class="form-label">Choix 2<span class="required-info">*</span> :</label>
-        <input name="valeurs_choix2" type="number" placeholder="Population" class="form-control w-50" step="1" required>
-        <input name="valeurs_choix2" type="number" placeholder="Finances" class="form-control w-50" step="1" required>        
-      </div> #}
+      <div class="mb-3">
+          <label class="form-label">Choix 2<span class="required-info">*</span> :</label>
+          <input name="valeurs_choix2_population" type="number" placeholder="Population" class="form-control w-50" step="1" required>
+          <input name="valeurs_choix2_finances" type="number" placeholder="Finances" class="form-control w-50" step="1" required>        
+      </div> 
       <input type="hidden" name="deck_id" value="{{ deckId }}">
         {% if isLoggedInAsAdmin %}
             <input type="hidden" name="ordre_soumission" value= "1">

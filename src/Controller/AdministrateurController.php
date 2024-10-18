@@ -17,7 +17,7 @@ class AdministrateurController extends Controller
      */
     public function index()
     {        
-        // Vérifier si l'utilisateur (créateur) est connecté
+        // Vérifier si l'utilisateur (administrateur) est connecté
         $isLoggedIn = isset($_SESSION['ad_mail_admin']);
         $ad_mail_admin = $isLoggedIn ? $_SESSION['ad_mail_admin'] : null;
 
@@ -89,12 +89,12 @@ class AdministrateurController extends Controller
                 return $this->display('administrateurs/login.html.twig', compact('error'));
             }
     
-            // Récupérer le créateur à partir de l'email
+            // Récupérer le administrateur à partir de l'email
             $administrateur = Administrateur::getInstance()->findOneBy(['ad_mail_admin' => $ad_mail_admin]);
     
             if (!$administrateur) {
-                // Si le créateur n'existe pas, afficher une erreur
-                $error = 'Créateur non trouvé.';
+                // Si le administrateur n'existe pas, afficher une erreur
+                $error = 'administrateur non trouvé.';
                 return $this->display('administrateurs/login.html.twig', compact('error'));
             }
     
@@ -121,7 +121,7 @@ class AdministrateurController extends Controller
             session_start();
         }
         
-        // Supprimer seulement l'ID et l'email du créateur
+        // Supprimer seulement l'ID et l'email du administrateur
         unset($_SESSION['ad_mail_admin'], $_SESSION['id_administrateur']);
 
         // Rediriger vers la page d'accueil ou une autre page

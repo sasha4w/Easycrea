@@ -2,7 +2,7 @@
 {% block title %}Connexion d'un administrateur - {{ parent }}{% endblock %}
 {% block content %}
  <main class="container">
-    <h1>Connexion d'un compte créateur</h1>
+    <h1>Connexion d'un compte administrateur</h1>
     <form action="{{ url('/administrateurs/connexion') }}" method="post" class="w-50" enctype="multipart/form-data">
       {# <input type="hidden" name="_token" value="{{ csrf_token('admin_form') }}"> #}
       <div class="mb-3">

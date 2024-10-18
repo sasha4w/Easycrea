@@ -28,35 +28,62 @@ class CarteController extends Controller
         $cartes = [];  // Initialiser la variable cartes
         $cartesByDeck = []; // Initialiser la variable cartesByDeck
     
-        // Si l'utilisateur est un administrateur, récupérer les decks sans cartes
-        if ($isLoggedInAsAdmin) {
-            $decksInfos = Carte::getInstance()->findAllWithDecksAdmin();
-            $cartes = Carte::getInstance()->findAll(); // Ici, on récupère toutes les cartes
+        // Si l'utilisateur est un administrateur, récupérer les decks
+    if ($isLoggedInAsAdmin) {
+        $decksInfos = Carte::getInstance()->findAllWithDecksAdmin();
+        $cartes = Carte::getInstance()->findAll(); // Ici, on récupère toutes les cartes
+
+        // Décoder les valeurs des choix pour chaque carte
+        foreach ($cartes as &$carte) {
+            // Si carte est un tableau, on la traite comme un tableau
+            if (is_array($carte)) {
+                $carte['valeurs_choix1'] = json_decode($carte['valeurs_choix1'], true);
+                $carte['valeurs_choix2'] = json_decode($carte['valeurs_choix2'], true);
+            } else {
+                // Sinon, on la traite comme un objet
+                $carte->valeurs_choix1 = json_decode($carte->valeurs_choix1, true);
+                $carte->valeurs_choix2 = json_decode($carte->valeurs_choix2, true);
+            }
         }
+
+        // Grouper les cartes par deck
+        foreach ($decksInfos as $deckInfo) {
+            $deckId = (int)(is_object($deckInfo) ? $deckInfo->id_deck : $deckInfo['id_deck']);
+            $cartesByDeck[$deckId] = array_filter($cartes, function($carte) use ($deckId) {
+                return (is_object($carte) ? $carte->id_deck : $carte['id_deck']) == $deckId; // Vérifier si carte est un objet ou tableau
+            });
+        }
+    }
     
         if ($isLoggedInAsCreateur) {
             // Récupérer les decks pour le créateur
             $decksInfos = Carte::getInstance()->findAllWithDecksCreateur();
     
-            // Débogage pour voir le contenu de $decksInfos
-            var_dump($decksInfos); // Pour déboguer
-    
             foreach ($decksInfos as $deckInfo) {
-                // Vérifier si deckInfo est un objet ou un tableau
-                if (is_object($deckInfo)) {
-                    $deckId = (int)$deckInfo->id_deck; // Forcer le type à int
-                } else {
-                    $deckId = (int)$deckInfo['id_deck']; // Forcer le type à int
-                }
+                $deckId = (int)(is_object($deckInfo) ? $deckInfo->id_deck : $deckInfo['id_deck']); // Forcer le type à int
     
                 // Récupérer les cartes par deck et créateur
                 $cartesByDeck[$deckId] = Carte::getInstance()->findByDeckAndCreateur($deckId, $id_createur);
+    
+                // Décoder les valeurs JSON des choix pour chaque carte
+                foreach ($cartesByDeck[$deckId] as &$carte) {
+                    if (is_array($carte)) {
+                        // Utiliser la notation tableau
+                        $carte['valeurs_choix1'] = json_decode($carte['valeurs_choix1'], true);
+                        $carte['valeurs_choix2'] = json_decode($carte['valeurs_choix2'], true);
+                    } else {
+                        // Utiliser la notation objet
+                        $carte->valeurs_choix1 = json_decode($carte->valeurs_choix1, true);
+                        $carte->valeurs_choix2 = json_decode($carte->valeurs_choix2, true);
+                    }
+                }
             }
         }
     
         // Dans les vues TWIG, on peut utiliser les variables
         $this->display('cartes/index.html.twig', compact('decksInfos', 'cartesByDeck', 'cartes', 'isLoggedInAsAdmin', 'isLoggedInAsCreateur', 'ad_mail_admin', 'nom_createur'));
     }
+    
     
 
     /**
@@ -78,15 +105,17 @@ class CarteController extends Controller
     } else {
         // Récupérer et nettoyer les données du formulaire
         $texte_carte = trim($_POST['texte_carte']);
-        $valeurs_choix1 = trim($_POST['valeurs_choix1']);
-        $valeurs_choix2 = trim($_POST['valeurs_choix2']);
+        $valeurs_choix1_population = (int) trim($_POST['valeurs_choix1_population']);
+        $valeurs_choix1_finances = (int) trim($_POST['valeurs_choix1_finances']);
+        $valeurs_choix2_population = (int) trim($_POST['valeurs_choix2_population']);
+        $valeurs_choix2_finances = (int) trim($_POST['valeurs_choix2_finances']);
         $ordre_soumission = trim($_POST['ordre_soumission']);
         
         // Initialiser un tableau d'erreurs
         $errors = [];
 
         // Valider les champs obligatoires
-        if (empty($texte_carte) || empty($valeurs_choix1) || empty($valeurs_choix2)) {
+        if (empty($texte_carte) || empty($valeurs_choix1_population) || empty($valeurs_choix1_finances) || empty($valeurs_choix2_population) || empty($valeurs_choix2_finances)) {
             $errors[] = 'Tous les champs obligatoires doivent être remplis.';
         }
 
@@ -100,6 +129,16 @@ class CarteController extends Controller
             $error = implode(' ', $errors); // Joindre les erreurs pour les afficher
             return $this->display('cartes/create.html.twig', compact('deckId', 'error', 'isLoggedInAsAdmin', 'isLoggedInAsCreateur'));
         }
+
+        // Encoder les choix en JSON
+        $valeurs_choix1 = json_encode([
+            'population' => $valeurs_choix1_population,
+            'finances' => $valeurs_choix1_finances
+        ]);
+        $valeurs_choix2 = json_encode([
+            'population' => $valeurs_choix2_population,
+            'finances' => $valeurs_choix2_finances
+        ]);        
 
         // Préparer les données pour l'insertion
         $data = [
