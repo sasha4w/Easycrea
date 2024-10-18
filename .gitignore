@@ -1,7 +1,7 @@
 # Ignorer les dossiers contenant des fichiers sensibles
 /src/_database/
 /src/Storage/
-
+/src/Config/config.prod.php
 # Ignorer les fichiers de configuration ou sensibles
 .htaccess
 .env
