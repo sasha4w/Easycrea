@@ -18,4 +18,4 @@
 
 # Ne pas ignorer certains fichiers dans le dossier public
 !/public/index.php
-/public/assets/
+!/public/assets/

@@ -101,7 +101,11 @@ class CarteController extends Controller
 
     // Vérifie si la méthode HTTP est GET pour afficher le formulaire
     if ($this->isGetMethod()) {
-        $this->display('cartes/create.html.twig', compact('deckId', 'isLoggedInAsAdmin', 'isLoggedInAsCreateur'));
+        $ordre_soumission = 0;
+        if ($isLoggedInAsCreateur) {
+            $ordre_soumission = Carte::getInstance()->countByDeckId($deckId) + 1;
+        }
+        $this->display('cartes/create.html.twig', compact('deckId', 'isLoggedInAsAdmin', 'isLoggedInAsCreateur', 'ordre_soumission'));
     } else {
         // Récupérer et nettoyer les données du formulaire
         $texte_carte = trim($_POST['texte_carte']);

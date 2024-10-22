@@ -24,7 +24,7 @@
             <input type="hidden" name="ordre_soumission" value= "1">
         {% endif %} 
         {% if isLoggedInAsCreateur %}
-            <input type="hidden" name="ordre_soumission" value= "2">            
+            <input type="hidden" name="ordre_soumission" value= "{{ordre_soumission}}">            
         {% endif %} 
       <p class="text-danger fs-6">Les données marquées d'une astérisque sont obligatoires.</p>
       <button type="submit" class="btn btn-primary">Créer la carte</button>

@@ -2,11 +2,14 @@
 {% block title %}{{parent()}}{% endblock %}
 {% block content %}
   <div class="container">
-    <h1 class="display-1">Qui es tu ?</h1>
+    <h1 class="display-1">Easycréa</h1>
+    <header>
+    <div>
+      <a href="{{ url('/administrateurs') }}" class="btn btn-primary m-4">Administrateur</a>
 
-    <a href="{{ url('/administrateurs') }}" class="btn btn-primary m-4">Administrateur</a>
-
-    <a href="{{ url('/createurs') }}" class="btn btn-primary m-4">Créateur</a>
+      <a href="{{ url('/createurs') }}" class="btn btn-primary m-4">Créateur</a>
+    </div>
+    </header>
   
 
   </div>
