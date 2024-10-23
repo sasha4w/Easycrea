@@ -58,5 +58,21 @@ class Carte extends Model
         $result = $sth->fetch();
         return $result ? (int) $result['total'] : 0;
     }
+    public function findRandomCardByDeck(int $id_deck): ?array
+    {
+        $sql = "SELECT * FROM {$this->tableName} WHERE id_deck = :id_deck ORDER BY RAND() LIMIT 1";
+        $sth = $this->query($sql, [':id_deck' => $id_deck]);
+        $carte = $sth->fetch();
+    
+        if ($carte) {
+            // Décoder les valeurs de choix en JSON
+            $carte['valeurs_choix1'] = json_decode($carte['valeurs_choix1'], true);
+            $carte['valeurs_choix2'] = json_decode($carte['valeurs_choix2'], true);
+            return $carte;
+        }
+    
+        return null;
+    }
+    
     
 }

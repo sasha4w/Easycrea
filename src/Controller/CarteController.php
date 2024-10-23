@@ -98,14 +98,14 @@ class CarteController extends Controller
     $deckId = (int) $deckId;
     $isLoggedInAsAdmin = isset($_SESSION['ad_mail_admin']);
     $isLoggedInAsCreateur = isset($_SESSION['ad_mail_createur']); 
-
+    $carteAleatoire = Carte::getInstance()->findRandomCardByDeck($deckId);    
     // Vérifie si la méthode HTTP est GET pour afficher le formulaire
     if ($this->isGetMethod()) {
         $ordre_soumission = 0;
         if ($isLoggedInAsCreateur) {
             $ordre_soumission = Carte::getInstance()->countByDeckId($deckId) + 1;
         }
-        $this->display('cartes/create.html.twig', compact('deckId', 'isLoggedInAsAdmin', 'isLoggedInAsCreateur', 'ordre_soumission'));
+        $this->display('cartes/create.html.twig', compact('deckId', 'isLoggedInAsAdmin', 'isLoggedInAsCreateur', 'ordre_soumission', 'carteAleatoire'));
     } else {
         // Récupérer et nettoyer les données du formulaire
         $texte_carte = trim($_POST['texte_carte']);

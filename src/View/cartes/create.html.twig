@@ -3,6 +3,17 @@
 {% block content %}
  <main class="container">
     <h1>Création d'une carte</h1>
+        {# Si une carte aléatoire existe, l'afficher au-dessus du formulaire #}
+    {% if carteAleatoire %}
+        <div class="alert alert-info">
+            <h2>Carte Aléatoire</h2>
+            <p><strong>Texte :</strong> {{ carteAleatoire.texte_carte }}</p>
+            <p><strong>Choix 1 - Population :</strong> {{ carteAleatoire.valeurs_choix1.population }}</p>
+            <p><strong>Choix 1 - Finances :</strong> {{ carteAleatoire.valeurs_choix1.finances }}</p>
+            <p><strong>Choix 2 - Population :</strong> {{ carteAleatoire.valeurs_choix2.population }}</p>
+            <p><strong>Choix 2 - Finances :</strong> {{ carteAleatoire.valeurs_choix2.finances }}</p>
+        </div>
+    {% endif %}
     <form action="{{ url('/cartes/ajouter/' ~ deckId) }}" method="post" class="w-50" enctype="multipart/form-data">
       <div class="mb-3">
           <label class="form-label">Texte <span class="required-info">*</span> :</label>
