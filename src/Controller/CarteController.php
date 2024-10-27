@@ -94,84 +94,80 @@ class CarteController extends Controller
      *
      */
     public function create($deckId)
-{
-    $deckId = (int) $deckId;
-    $isLoggedInAsAdmin = isset($_SESSION['ad_mail_admin']);
-    $isLoggedInAsCreateur = isset($_SESSION['ad_mail_createur']); 
-    $carteAleatoire = Carte::getInstance()->findRandomCardByDeck($deckId);    
-    // Vérifie si la méthode HTTP est GET pour afficher le formulaire
-    if ($this->isGetMethod()) {
-        $ordre_soumission = 0;
-        if ($isLoggedInAsCreateur) {
-            $ordre_soumission = Carte::getInstance()->countByDeckId($deckId) + 1;
+    {
+        $deckId = (int) $deckId;
+        $isLoggedInAsAdmin = isset($_SESSION['ad_mail_admin']);
+        $isLoggedInAsCreateur = isset($_SESSION['ad_mail_createur']); 
+        $carteAleatoire = Carte::getInstance()->findRandomCardByDeck($deckId);    
+        $ordre_soumission = $isLoggedInAsCreateur ? Carte::getInstance()->countByDeckId($deckId) + 1 : 0;
+    
+        // Vérifie si la méthode HTTP est GET pour afficher le formulaire
+        if ($this->isGetMethod()) {
+            $this->display('cartes/create.html.twig', compact('deckId', 'isLoggedInAsAdmin', 'isLoggedInAsCreateur', 'ordre_soumission', 'carteAleatoire'));
+        } else {
+            // Récupérer et nettoyer les données du formulaire
+            $texte_carte = trim($_POST['texte_carte']);
+            $valeurs_choix1_population = (int) trim($_POST['valeurs_choix1_population']);
+            $valeurs_choix1_finances = (int) trim($_POST['valeurs_choix1_finances']);
+            $valeurs_choix2_population = (int) trim($_POST['valeurs_choix2_population']);
+            $valeurs_choix2_finances = (int) trim($_POST['valeurs_choix2_finances']);
+            $ordre_soumission = trim($_POST['ordre_soumission']);
+            
+            // Initialiser un tableau d'erreurs
+            $errors = [];
+    
+            // Valider les champs obligatoires
+            if (empty($texte_carte) || empty($valeurs_choix1_population) || empty($valeurs_choix1_finances) || empty($valeurs_choix2_population) || empty($valeurs_choix2_finances) || empty($ordre_soumission)) {
+                $errors[] = 'Tous les champs obligatoires doivent être remplis.';
+            }
+    
+            // Vérification de la longueur du texte de la carte
+            if (strlen($texte_carte) < 50 || strlen($texte_carte) > 280) {
+                $errors[] = 'Le texte de la carte doit contenir entre 50 et 280 caractères.';
+            }
+    
+            // S'il y a des erreurs, afficher le formulaire avec les messages d'erreur
+            if (!empty($errors)) {
+                $error = implode(' ', $errors); // Joindre les erreurs pour les afficher
+                return $this->display('cartes/create.html.twig', compact('deckId', 'error', 'isLoggedInAsAdmin', 'isLoggedInAsCreateur', 'ordre_soumission', 'carteAleatoire'));
+            }
+    
+            // Encoder les choix en JSON
+            $valeurs_choix1 = json_encode([
+                'population' => $valeurs_choix1_population,
+                'finances' => $valeurs_choix1_finances
+            ]);
+            $valeurs_choix2 = json_encode([
+                'population' => $valeurs_choix2_population,
+                'finances' => $valeurs_choix2_finances
+            ]);        
+    
+            // Préparer les données pour l'insertion
+            $data = [
+                'texte_carte' => $texte_carte,
+                'valeurs_choix1' => $valeurs_choix1,
+                'valeurs_choix2' => $valeurs_choix2,
+                'id_deck' => $deckId, // clé étrangère associée au deck
+                'ordre_soumission' => $ordre_soumission,
+            ];
+    
+            // Ajouter les ID créateur ou administrateur si l'utilisateur est connecté
+            if ($isLoggedInAsCreateur) {
+                $data['id_createur'] = trim($_SESSION['id_createur']);
+            }
+    
+            if ($isLoggedInAsAdmin) {
+                $data['id_administrateur'] = trim($_SESSION['id_administrateur']);
+            }
+    
+            // Insérer la carte dans la base de données
+            Carte::getInstance()->create($data);
+    
+            // Rediriger vers la liste des cartes après l'insertion
+            HTTP::redirect('/cartes');
         }
-        $this->display('cartes/create.html.twig', compact('deckId', 'isLoggedInAsAdmin', 'isLoggedInAsCreateur', 'ordre_soumission', 'carteAleatoire'));
-    } else {
-        // Récupérer et nettoyer les données du formulaire
-        $texte_carte = trim($_POST['texte_carte']);
-        $valeurs_choix1_population = (int) trim($_POST['valeurs_choix1_population']);
-        $valeurs_choix1_finances = (int) trim($_POST['valeurs_choix1_finances']);
-        $valeurs_choix2_population = (int) trim($_POST['valeurs_choix2_population']);
-        $valeurs_choix2_finances = (int) trim($_POST['valeurs_choix2_finances']);
-        $ordre_soumission = trim($_POST['ordre_soumission']);
-        
-        // Initialiser un tableau d'erreurs
-        $errors = [];
-
-        // Valider les champs obligatoires
-        if (empty($texte_carte) || empty($valeurs_choix1_population) || empty($valeurs_choix1_finances) || empty($valeurs_choix2_population) || empty($valeurs_choix2_finances)) {
-            $errors[] = 'Tous les champs obligatoires doivent être remplis.';
-        }
-
-        // Vérification de la longueur du texte de la carte
-        if (strlen($texte_carte) < 50 || strlen($texte_carte) > 280) {
-            $errors[] = 'Le texte de la carte doit contenir entre 50 et 280 caractères.';
-        }
-
-        // S'il y a des erreurs, afficher le formulaire avec les messages d'erreur
-        if (!empty($errors)) {
-            $error = implode(' ', $errors); // Joindre les erreurs pour les afficher
-            return $this->display('cartes/create.html.twig', compact('deckId', 'error', 'isLoggedInAsAdmin', 'isLoggedInAsCreateur'));
-        }
-
-        // Encoder les choix en JSON
-        $valeurs_choix1 = json_encode([
-            'population' => $valeurs_choix1_population,
-            'finances' => $valeurs_choix1_finances
-        ]);
-        $valeurs_choix2 = json_encode([
-            'population' => $valeurs_choix2_population,
-            'finances' => $valeurs_choix2_finances
-        ]);        
-
-        // Préparer les données pour l'insertion
-        $data = [
-            'texte_carte' => $texte_carte,
-            'valeurs_choix1' => $valeurs_choix1,
-            'valeurs_choix2' => $valeurs_choix2,
-            'id_deck' => $deckId, // clé étrangère associée au deck
-            'ordre_soumission' => $ordre_soumission,
-        ];
-
-        // Ajouter les ID créateur ou administrateur si l'utilisateur est connecté
-        if ($isLoggedInAsCreateur) {
-            $id_createur = trim($_SESSION['id_createur']);
-            $data['id_createur'] = $id_createur;
-        }
-
-        if ($isLoggedInAsAdmin) {
-            $id_administrateur = trim($_SESSION['id_administrateur']);
-            $data['id_administrateur'] = $id_administrateur;
-        }
-
-        // Insérer la carte dans la base de données
-        Carte::getInstance()->create($data);
-
-        // Rediriger vers la liste des cartes après l'insertion
-        HTTP::redirect('/cartes');
     }
-}
-
+    
     
     public function edit(int|string $id)
     {

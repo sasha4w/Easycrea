@@ -37,52 +37,70 @@ class CreateurController extends Controller
         if ($this->isGetMethod()) {
             $this->display('createurs/create.html.twig');
         } else {
-            // if (!Security::verifyCsrfToken($_POST['csrf_token'] ?? '')) {
-            //     Security::handleInvalidCsrfToken();
-            // }
-            // dd($_POST);
             // Récupérer et nettoyer les données du formulaire
             $nom_createur = trim($_POST['nom_createur']);
             $ad_mail_createur = filter_var(trim($_POST['ad_mail_createur']), FILTER_SANITIZE_EMAIL);
             $mdp_createur = trim($_POST['mdp_createur']);
             $genre = trim($_POST['genre']);
             $ddn = trim($_POST['ddn']);
-
+    
             // Valider l'email
             if (!filter_var($ad_mail_createur, FILTER_VALIDATE_EMAIL)) {
-                // Afficher un message d'erreur ou rediriger
-                $error = 'email non valide';
+                $error = 'Email non valide.';
                 return $this->display('createurs/create.html.twig', compact('error'));
             }
-
+    
             // Vérifier si les champs obligatoires sont présents
             if (empty($nom_createur) || empty($ad_mail_createur) || empty($mdp_createur) || empty($genre) || empty($ddn)) {
                 $error = 'Tous les champs obligatoires doivent être remplis.';
                 return $this->display('createurs/create.html.twig', compact('error'));
             }
+    
+            // Valider le genre et la date de naissance
             $validGenres = ['Homme', 'Femme', 'Autres'];
             if (!in_array($genre, $validGenres)) {
-                $error = 'Tous les champs obligatoires doivent être remplis.';
+                $error = 'Le genre sélectionné est invalide.';
                 return $this->display('createurs/create.html.twig', compact('error'));
             }
+    
             if (!DateTime::createFromFormat('Y-m-d', $ddn)) {
-                $error = 'Tous les champs obligatoires doivent être remplis.';
+                $error = 'La date de naissance doit être au format YYYY-MM-DD.';
                 return $this->display('createurs/create.html.twig', compact('error'));
-            }            
+            }
+    
+            // Vérifier l'unicité de l'email
+            $existingCreator = Createur::getInstance()->findOneBy(['ad_mail_createur' => $ad_mail_createur]);
+            if ($existingCreator) {
+                $error = "L'adresse e-mail est déjà utilisée.";
+                return $this->display('createurs/create.html.twig', compact('error'));
+            }
+    
             // Hacher le mot de passe avant de l'enregistrer
             $hashedPassword = password_hash($mdp_createur, PASSWORD_BCRYPT);
-
-            // Insérer les données dans la base de données
-            Createur::getInstance()->create([
-                'nom_createur' => $nom_createur,
-                'ad_mail_createur' => $ad_mail_createur,
-                'mdp_createur' => $hashedPassword,
-                'genre' => $genre,
-                'ddn' => $ddn,
-            ]);
-            HTTP::redirect('/createurs');
+    
+            try {
+                // Insérer les données dans la base de données
+                Createur::getInstance()->create([
+                    'nom_createur' => $nom_createur,
+                    'ad_mail_createur' => $ad_mail_createur,
+                    'mdp_createur' => $hashedPassword,
+                    'genre' => $genre,
+                    'ddn' => $ddn,
+                ]);
+    
+                // Redirection après succès
+                HTTP::redirect('/createurs');
+    
+            } catch (PDOException $e) {
+                // En cas d'autre erreur SQL
+                $error = "Une erreur s'est produite lors de l'inscription.";
+                return $this->display('createurs/create.html.twig', compact('error'));
+            }
         }
     }
+    
+    
+    
     public function login()
     {
         if ($this->isGetMethod()) {

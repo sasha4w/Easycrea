@@ -17,7 +17,7 @@
                 <div class="col-md-8">
                     <h2>Nom du deck : {{ deckInfo.titre_deck }}</h2>
                     {% if cartesByDeck[deckInfo.id_deck] is empty %}
-                        <a href="{{ url('/cartes/ajouter/' ~ deckInfo.id_deck) }}" class="btn btn-primary m-4">Ajouter une carte à ce deck</a>
+                        <a href="{{ url('/cartes/ajouter/' ~ deckInfo.id_deck) ~ '/' }}" class="btn btn-primary m-4">Ajouter une carte à ce deck</a>
                     {% else %}
                         <p class="text-success">Une carte a déjà été ajoutée à ce deck.</p>
                     {% endif %}
