@@ -3,7 +3,7 @@
 {% block content %}
  <main class="container">
     <h1>Création d'un compte créateur</h1>
-    <form action="{{ url('/createurs/ajouter') }}" method="post" class="w-50" enctype="multipart/form-data">
+    <form action="{{ url('/createurs/ajouter') }}" method="post" class="w-100" enctype="multipart/form-data">
       {# <input type="hidden" name="_token" value="{{ csrf_token('createur_form') }}"> #}
       <div class="mb-3">
         <label class="form-label">Email <span class="required-info">*</span> :</label>
@@ -11,15 +11,15 @@
       </div>
       <div class="mb-3">
         <label class="form-label">Mot de passe <span class="required-info">*</span> :</label>
-        <input name="mdp_createur" type="password" class="form-control w-50" required>
+        <input name="mdp_createur" type="password" class="form-control w-100" required>
       </div>
       <div class="mb-3">
         <label class="form-label">Nom<span class="required-info">*</span> :</label>
-        <input name="nom_createur" type="text" class="form-control w-50" required>
+        <input name="nom_createur" type="text" class="form-control w-100" required>
       </div>
       <div class="mb-3">
         <label class="form-label">Genre <span class="required-info">*</span> :</label>
-        <select name="genre" class="form-control w-50" required>
+        <select name="genre" class="form-control w-100" required>
           <option value="" disabled selected>Choisir le genre</option>
           <option value="Homme">Homme</option>
           <option value="Femme">Femme</option>
@@ -28,7 +28,7 @@
       </div>
       <div class="mb-3">
         <label class="form-label">Date naissance <span class="required-info">*</span> :</label>
-        <input name="ddn" type="date" class="form-control w-50" required max="{{ "now"|date("Y-m-d") }}">
+        <input name="ddn" type="date" class="form-control w-100" required max="{{ "now"|date("Y-m-d") }}">
       </div>
       <p class="text-danger fs-6">Les données marquées d'une astérisque sont obligatoires.</p>
       <button type="submit" class="btn btn-primary">Créer son compte créateur</button>

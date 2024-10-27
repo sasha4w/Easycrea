@@ -14,7 +14,7 @@
             <p><strong>Choix 2 - Finances :</strong> {{ carteAleatoire.valeurs_choix2.finances }}</p>
         </div>
     {% endif %}
-    <form action="{{ url('/cartes/ajouter/' ~ deckId ~ '/') }}" method="post" class="w-50" enctype="multipart/form-data">
+    <form action="{{ url('/cartes/ajouter/' ~ deckId ~ '/') }}" method="post" class="w-100" enctype="multipart/form-data">
       <div class="mb-3">
           <label class="form-label">Texte <span class="required-info">*</span> :</label>
           <textarea name="texte_carte" id="texte_carte" class="form-control" rows="4" minlength="50" maxlength="280" required></textarea>
@@ -22,13 +22,13 @@
       </div>
       <div class="mb-3">
           <label class="form-label">Choix 1<span class="required-info">*</span> :</label>
-          <input name="valeurs_choix1_population" type="number" placeholder="Population" class="form-control w-50" step="1" required>
-          <input name="valeurs_choix1_finances" type="number" placeholder="Finances" class="form-control w-50" step="1" required>        
+          <input name="valeurs_choix1_population" type="number" placeholder="Population" class="form-control w-100" step="1" required>
+          <input name="valeurs_choix1_finances" type="number" placeholder="Finances" class="form-control w-100" step="1" required>        
       </div>
       <div class="mb-3">
           <label class="form-label">Choix 2<span class="required-info">*</span> :</label>
-          <input name="valeurs_choix2_population" type="number" placeholder="Population" class="form-control w-50" step="1" required>
-          <input name="valeurs_choix2_finances" type="number" placeholder="Finances" class="form-control w-50" step="1" required>        
+          <input name="valeurs_choix2_population" type="number" placeholder="Population" class="form-control w-100" step="1" required>
+          <input name="valeurs_choix2_finances" type="number" placeholder="Finances" class="form-control w-100" step="1" required>        
       </div> 
       <input type="hidden" name="deck_id" value="{{ deckId }}">
         {% if isLoggedInAsAdmin %}
