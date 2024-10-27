@@ -3,18 +3,18 @@
 {% block content %}
  <main class="container">
     <h1>Ajouter un deck</h1>
-    <form action="{{ url('/decks/ajouter') }}" method="post" class="w-50" enctype="multipart/form-data">
+    <form action="{{ url('/decks/ajouter') }}" method="post" class="w-100" enctype="multipart/form-data">
       <div class="mb-3">
         <label class="form-label">Titre du deck<span class="required-info">*</span> :</label>
-        <input name="titre_deck" type="text" class="form-control w-50" required>
+        <input name="titre_deck" type="text" class="form-control w-100" required>
       </div>
       <div class="mb-3">
         <label class="form-label">Nombre de carte <span class="required-info">*</span> :</label>
-        <input name="nb_cartes" type="number" class="form-control w-50" min="1" step="1" required>
+        <input name="nb_cartes" type="number" class="form-control w-100" min="1" step="1" required>
       </div>
       <div class="mb-3">
         <label class="form-label">Date de fin du deck <span class="required-info">*</span> :</label>
-        <input name="date_fin_deck" type="date" class="form-control w-50" min="{{ ( "now"|date_modify('+1 day') )|date('Y-m-d') }}">
+        <input name="date_fin_deck" type="date" class="form-control w-100" min="{{ ( "now"|date_modify('+1 day') )|date('Y-m-d') }}">
       </div>
       <p class="text-danger fs-6">Les données marquées d'une astérisque sont obligatoires.</p>
       <button type="submit" class="btn btn-primary">Ajouter un nouveau deck</button>
