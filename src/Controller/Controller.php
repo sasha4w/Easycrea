@@ -27,6 +27,11 @@ class Controller
         string $view = 'index',
         array $datas = []
     ) {
+                // Définition de la base URL dynamique
+        $base_url = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]/ReignsWebapp/public";
+
+        // Ajouter base_url aux données pour Twig
+        $datas['base_url'] = $base_url;
         return $this->twig->display($view, $datas);
     }
 
