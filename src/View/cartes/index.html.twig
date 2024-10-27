@@ -18,7 +18,7 @@
                 <h2>Nom du deck : {{ deckInfo.titre_deck }}</h2>
                 {% if deckInfo.carte_count < deckInfo.nb_cartes %}
                     {% if cartesByDeck[deckInfo.id_deck] is empty %}
-                        <a href="{{ url('/cartes/ajouter/' ~ deckInfo.id_deck) }}" class="btn btn-primary m-4">Ajouter une carte à ce deck</a>
+                        <a href="{{ url('/cartes/ajouter/' ~ deckInfo.id_deck  ~ '/') }}" class="btn btn-primary m-4">Ajouter une carte à ce deck</a>
                     {% else %}
                     <p class="text-success">Une carte a déjà été ajoutée à ce deck.</p>
                     {% endif %}
@@ -65,7 +65,7 @@
                                 <div class="col-md-2 position-relative">
                                     <div class="deck-operations">
                                         
-                                            <a href="{{ url('/cartes/éditer/' ~ carte.id_carte ) }}" class="text-warning">éditer</a>
+                                            <a href="{{ url('/cartes/éditer/' ~ carte.id_carte  ) }}" class="text-warning">éditer</a>
                                             <a href="{{ url('/cartes/effacer/' ~ carte.id_carte ) }}" class="text-danger">effacer</a>
 
                                     </div>
