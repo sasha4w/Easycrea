@@ -95,6 +95,14 @@ class Controller
     }
     public function accueil()
     {
+                // Démarrer la session si elle n'est pas déjà démarrée
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+        // Détruire la session pour réinitialiser les données
+        session_destroy();
+        $_SESSION = [];
+
         // dans les vues TWIG, on peut utiliser la variable administrateurs
         $this->display('/index.html.twig');
     }
