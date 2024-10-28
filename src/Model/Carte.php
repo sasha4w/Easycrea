@@ -58,20 +58,38 @@ class Carte extends Model
         $result = $sth->fetch();
         return $result ? (int) $result['total'] : 0;
     }
-    public function findRandomCardByDeck(int $id_deck): ?array
+    public function getOrAssignRandomCard(int $deckId): ?array
     {
-        $sql = "SELECT * FROM {$this->tableName} WHERE id_deck = :id_deck ORDER BY RAND() LIMIT 1";
-        $sth = $this->query($sql, [':id_deck' => $id_deck]);
-        $carte = $sth->fetch();
+        // Vérifie si une carte aléatoire existe déjà pour ce deck dans `carte aleatoire`
+        $sql = "SELECT id_carte FROM `carte_aleatoire` WHERE id_deck = :id_deck"; // Utiliser le nom de la table avec des backticks
+        $sth = $this->query($sql, [':id_deck' => $deckId]);
+        $carteId = $sth->fetchColumn();
     
-        if ($carte) {
-            // Décoder les valeurs de choix en JSON
-            $carte['valeurs_choix1'] = json_decode($carte['valeurs_choix1'], true);
-            $carte['valeurs_choix2'] = json_decode($carte['valeurs_choix2'], true);
-            return $carte;
+        if ($carteId) {
+            // Si une carte est déjà assignée, la récupérer
+            $sql = "SELECT * FROM {$this->tableName} WHERE id_carte = :id_carte";
+            $sth = $this->query($sql, [':id_carte' => $carteId]);
+            $carte = $sth->fetch();
+        } else {
+            // Sinon, en tirer une au hasard
+            $sql = "SELECT * FROM {$this->tableName} WHERE id_deck = :id_deck ORDER BY RAND() LIMIT 1";
+            $sth = $this->query($sql, [':id_deck' => $deckId]);
+            $carte = $sth->fetch();
+    
+            if ($carte) {
+                // Associer la carte tirée au deck dans `carte aleatoire`
+                $insertSql = "INSERT INTO `carte_aleatoire` (id_deck, id_carte) VALUES (:id_deck, :id_carte)"; // Utiliser le nom de la table avec des backticks
+                $this->query($insertSql, [':id_deck' => $deckId, ':id_carte' => $carte['id_carte']]);
+            }
         }
     
-        return null;
+        // Décoder les valeurs de choix en JSON si une carte est trouvée
+        if ($carte) {
+            $carte['valeurs_choix1'] = json_decode($carte['valeurs_choix1'], true);
+            $carte['valeurs_choix2'] = json_decode($carte['valeurs_choix2'], true);
+        }
+    
+        return $carte ?: null;
     }
     
     

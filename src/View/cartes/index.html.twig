@@ -35,14 +35,23 @@
                 {% set cartes = cartesByDeck[deckInfo.id_deck] ?? [] %} {# Récupère les cartes pour le deck actuel #}
                 {% if cartes is not empty %}
                     {% for carte in cartes %}
+                    {{ dump(carte) }}
                         <section class="row mb-3 bg-light">
                             <div class="col-md-8">
-                                <h4>Titre du deck : {{ deckInfo.titre_deck }}</h4>
+                                <h3>Titre du deck : {{ deckInfo.titre_deck }}</h4>
                                 <p class="m-0">Cartes : {{ deckInfo.carte_count }} / {{ deckInfo.nb_cartes }}</p> {# Affiche le ratio cartes actuelles / max #}
                                 <p class="m-0">Texte de la carte : {{ carte.texte_carte }}</p>
                                 <p class="m-0">Valeurs choix 1 : Population : {{ carte.valeurs_choix1.population }}, Finances : {{ carte.valeurs_choix1.finances }}</p>
                                 <p class="m-0">Valeurs choix 2 : Population : {{ carte.valeurs_choix2.population }}, Finances : {{ carte.valeurs_choix2.finances }}</p>
                             </div>
+                            <h3>Carte aléatoire : </h3>
+                            {% if carte.carteAleatoire is defined %}
+                                <p class="m-0">Texte de la carte aléatoire : {{ carte.carteAleatoire['texte_carte'] }}</p>
+                                <p class="m-0">Valeurs choix 1 : Population : {{ carte.carteAleatoire['valeurs_choix1']['population'] }}, Finances : {{ carte.carteAleatoire['valeurs_choix1']['finances'] }}</p>
+                                <p class="m-0">Valeurs choix 2 : Population : {{ carte.carteAleatoire['valeurs_choix2']['population'] }}, Finances : {{ carte.carteAleatoire['valeurs_choix2']['finances'] }}</p>
+                            {% else %}
+                                <p>Aucune carte aléatoire trouvée pour cette carte.</p>
+                            {% endif %}
                         </section>
                     {% endfor %}
                 {% else %}
@@ -58,7 +67,7 @@
                     {% for carte in cartes %}
                         <section class="row mb-3 bg-light">
                             <div class="col-md-8">
-                                <h4>Titre du deck : {{ deckInfo.titre_deck }}</h4>
+                                <h3>Titre du deck : {{ deckInfo.titre_deck }}</h4>
                                 <p class="m-0">Texte de la carte : {{ carte.texte_carte }}</p>
                                 <p class="m-0">Valeurs choix 1 : Population : {{ carte.valeurs_choix1.population }}, Finances : {{ carte.valeurs_choix1.finances }}</p>
                                 <p class="m-0">Valeurs choix 2 : Population : {{ carte.valeurs_choix2.population }}, Finances : {{ carte.valeurs_choix2.finances }}</p>
