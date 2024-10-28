@@ -15,16 +15,21 @@
         {% for deckInfo in decksInfos %}
             <section class="row mb-3 bg-light">
                 <div class="col-md-8">
-                <h2>Nom du deck : {{ deckInfo.titre_deck }}</h2>
-                {% if deckInfo.carte_count < deckInfo.nb_cartes %}
-                    {% if cartesByDeck[deckInfo.id_deck] is empty %}
-                        <a href="{{ url('/cartes/ajouter/' ~ deckInfo.id_deck  ~ '/') }}" class="btn btn-primary m-4">Ajouter une carte à ce deck</a>
+                    <h2>Nom du deck : {{ deckInfo.titre_deck }}</h2>
+
+                    {% if deckInfo.date_fin_deck < currentTime.format('Y-m-d H:i:s') %}
+                        <p class="text-warning">Ce deck est expiré.</p>
                     {% else %}
-                    <p class="text-success">Une carte a déjà été ajoutée à ce deck.</p>
+                        {% if deckInfo.carte_count < deckInfo.nb_cartes %}
+                            {% if cartesByDeck[deckInfo.id_deck] is empty %}
+                                <a href="{{ url('/cartes/ajouter/' ~ deckInfo.id_deck  ~ '/') }}" class="btn btn-primary m-4">Ajouter une carte à ce deck</a>
+                            {% else %}
+                                <p class="text-success">Une carte a déjà été ajoutée à ce deck.</p>
+                            {% endif %}
+                        {% else %}
+                            <p class="text-success">Le deck a atteint le nombre maximum de cartes.</p>
+                        {% endif %}
                     {% endif %}
-                {% else %}
-                    <p class="text-success">Le deck a atteint le nombre maximum de cartes.</p>
-                {% endif %}
                 </div>
             </section>
         {% endfor %}
@@ -35,7 +40,6 @@
                 {% set cartes = cartesByDeck[deckInfo.id_deck] ?? [] %} {# Récupère les cartes pour le deck actuel #}
                 {% if cartes is not empty %}
                     {% for carte in cartes %}
-                    {{ dump(carte) }}
                         <section class="row mb-3 bg-light">
                             <div class="col-md-8">
                                 <h3>Titre du deck : {{ deckInfo.titre_deck }}</h4>

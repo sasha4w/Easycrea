@@ -7,6 +7,7 @@ namespace App\Controller;
 use App\Helper\HTTP;
 use App\Helper\Security;
 use App\Model\Carte;
+use DateTime;
 
 class CarteController extends Controller
 {
@@ -22,12 +23,13 @@ class CarteController extends Controller
         $ad_mail_admin = $isLoggedInAsAdmin ? $_SESSION['ad_mail_admin'] : null;
         $nom_createur = $isLoggedInAsCreateur ? $_SESSION['nom_createur'] : null;
         $id_createur = $isLoggedInAsCreateur ? (int)$_SESSION['id_createur'] : null;
-    
+
         // Initialiser les variables
         $decksInfos = [];
         $cartes = [];  // Initialiser la variable cartes
         $cartesByDeck = []; // Initialiser la variable cartesByDeck
-    
+        $currentTime = (new DateTime())->format('Y-m-d H:i:s'); // Date formatée en chaîne
+
         // Si l'utilisateur est un administrateur, récupérer les decks
         if ($isLoggedInAsAdmin) {
             $decksInfos = Carte::getInstance()->findAllWithDecksAdmin();
@@ -105,7 +107,7 @@ class CarteController extends Controller
         }
     
         // Dans les vues TWIG, on peut utiliser les variables
-        $this->display('cartes/index.html.twig', compact('decksInfos', 'cartesByDeck', 'cartes', 'isLoggedInAsAdmin', 'isLoggedInAsCreateur', 'ad_mail_admin', 'nom_createur'));
+        $this->display('cartes/index.html.twig', compact('decksInfos', 'cartesByDeck', 'cartes', 'isLoggedInAsAdmin', 'isLoggedInAsCreateur', 'ad_mail_admin', 'nom_createur', 'currentTime'));
     }
     
     
