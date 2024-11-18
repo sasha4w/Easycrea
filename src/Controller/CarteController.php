@@ -18,6 +18,7 @@ class CarteController extends Controller
      */
     public function index()
     {
+        // iniatialisation des variables
         $isLoggedInAsAdmin = isset($_SESSION['ad_mail_admin']);
         $isLoggedInAsCreateur = isset($_SESSION['ad_mail_createur']);
         $ad_mail_admin = $isLoggedInAsAdmin ? $_SESSION['ad_mail_admin'] : null;
