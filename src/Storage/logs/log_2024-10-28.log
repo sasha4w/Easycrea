@@ -1,0 +1,95 @@
+[2024-10-28 10:18:36]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'carte@create',
+        2 => array(
+            'deckId' => '7',
+        ),
+    )
+    exception-line: 230
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\src\Model\Model.php'
+    exception-code: 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'db.reignswebapp.carte_aleatoire' doesn't exist'
+[2024-10-28 10:28:06]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'carte@create',
+        2 => array(
+            'deckId' => '6',
+        ),
+    )
+    exception-line: 230
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\src\Model\Model.php'
+    exception-code: 'SQLSTATE[HY093]: Invalid parameter number: parameter was not defined'
+[2024-10-28 10:28:21]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'carte@create',
+        2 => array(
+            'deckId' => '5',
+        ),
+    )
+    exception-line: 230
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\src\Model\Model.php'
+    exception-code: 'SQLSTATE[HY093]: Invalid parameter number: parameter was not defined'
+[2024-10-28 10:34:53]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'carte@create',
+        2 => array(
+            'deckId' => '6',
+        ),
+    )
+    exception-line: 230
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\src\Model\Model.php'
+    exception-code: 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'db.reignswebapp.carte aleatoire' doesn't exist'
+[2024-10-28 10:38:35]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'carte@create',
+        2 => array(
+            'deckId' => '6',
+        ),
+    )
+    exception-line: 230
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\src\Model\Model.php'
+    exception-code: 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'db.reignswebapp.carte aleatoire' doesn't exist'
+[2024-10-28 10:38:42]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'carte@create',
+        2 => array(
+            'deckId' => '5',
+        ),
+    )
+    exception-line: 230
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\src\Model\Model.php'
+    exception-code: 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'db.reignswebapp.carte aleatoire' doesn't exist'
+[2024-10-28 10:40:38]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'carte@create',
+        2 => array(
+            'deckId' => '7',
+        ),
+    )
+    exception-line: 230
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\src\Model\Model.php'
+    exception-code: 'SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '0' for key 'PRIMARY''
+[2024-10-28 11:39:16]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'carte@index',
+        2 => array(),
+    )
+    exception-line: 48
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\src\View\cartes\index.html.twig'
+    exception-code: 'Unexpected token "punctuation" of value "]".'
+[2024-10-28 17:56:55]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'carte@index',
+        2 => array(),
+    )
+    exception-line: 39
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\src\View\cartes\index.html.twig'
+    exception-code: 'Unexpected "endfor" tag (expecting closing tag for the "if" tag defined near line 6).'

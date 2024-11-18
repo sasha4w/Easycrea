@@ -1,0 +1,3 @@
+[2024-10-14 22:56:08]	[ALERT]	500 - le contrôleur App\Controller\EtudiantController n'existe pas
+[2024-10-14 22:57:47]	[ALERT]	500 - le contrôleur App\Controller\AdministrateurController n'existe pas
+[2024-10-14 23:18:36]	[ALERT]	404 - commande non existante :: /phpmyadmin/

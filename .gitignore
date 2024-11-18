@@ -6,10 +6,6 @@
 # .env
 
 # Ignorer des fichiers générés automatiquement par le système ou les IDE
-*.log
-*.tmp
-*.DS_Store
-*.bak
 
 # Ignorer les fichiers cachés ou temporaires des IDE
 .vscode/

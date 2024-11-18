@@ -1,0 +1,306 @@
+[2024-10-18 0:01:59]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'carte@index',
+        2 => array(),
+    )
+    exception-line: 77
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\src\View\cartes\index.html.twig'
+    exception-code: 'Unexpected "endfor" tag (expecting closing tag for the "if" tag defined near line 59).'
+[2024-10-18 2:34:08]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'carte@index',
+        2 => array(),
+    )
+    exception-line: 57
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\src\Controller\CarteController.php'
+    exception-code: 'Attempt to read property "valeurs_choix1" on array'
+[2024-10-18 2:35:30]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'carte@index',
+        2 => array(),
+    )
+    exception-line: 57
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\src\Controller\CarteController.php'
+    exception-code: 'Attempt to read property "valeurs_choix1" on array'
+[2024-10-18 2:35:47]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'carte@index',
+        2 => array(),
+    )
+    exception-line: 57
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\src\Controller\CarteController.php'
+    exception-code: 'Attempt to read property "valeurs_choix1" on array'
+[2024-10-18 2:37:54]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'carte@index',
+        2 => array(),
+    )
+    exception-line: 350
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\vendor\twig\twig\src\Template.php'
+    exception-code: 'Array to string conversion'
+[2024-10-18 2:41:52]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'carte@index',
+        2 => array(),
+    )
+    exception-line: 350
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\vendor\twig\twig\src\Template.php'
+    exception-code: 'Array to string conversion'
+[2024-10-18 2:43:50]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'carte@index',
+        2 => array(),
+    )
+    exception-line: 350
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\vendor\twig\twig\src\Template.php'
+    exception-code: 'Array to string conversion'
+[2024-10-18 2:43:56]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'carte@index',
+        2 => array(),
+    )
+    exception-line: 350
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\vendor\twig\twig\src\Template.php'
+    exception-code: 'Array to string conversion'
+[2024-10-18 2:43:57]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'carte@index',
+        2 => array(),
+    )
+    exception-line: 350
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\vendor\twig\twig\src\Template.php'
+    exception-code: 'Array to string conversion'
+[2024-10-18 2:43:57]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'carte@index',
+        2 => array(),
+    )
+    exception-line: 350
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\vendor\twig\twig\src\Template.php'
+    exception-code: 'Array to string conversion'
+[2024-10-18 2:43:57]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'carte@index',
+        2 => array(),
+    )
+    exception-line: 350
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\vendor\twig\twig\src\Template.php'
+    exception-code: 'Array to string conversion'
+[2024-10-18 2:43:57]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'carte@index',
+        2 => array(),
+    )
+    exception-line: 350
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\vendor\twig\twig\src\Template.php'
+    exception-code: 'Array to string conversion'
+[2024-10-18 2:43:58]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'carte@index',
+        2 => array(),
+    )
+    exception-line: 350
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\vendor\twig\twig\src\Template.php'
+    exception-code: 'Array to string conversion'
+[2024-10-18 2:43:58]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'carte@index',
+        2 => array(),
+    )
+    exception-line: 350
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\vendor\twig\twig\src\Template.php'
+    exception-code: 'Array to string conversion'
+[2024-10-18 2:43:58]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'carte@index',
+        2 => array(),
+    )
+    exception-line: 350
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\vendor\twig\twig\src\Template.php'
+    exception-code: 'Array to string conversion'
+[2024-10-18 2:43:58]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'carte@index',
+        2 => array(),
+    )
+    exception-line: 350
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\vendor\twig\twig\src\Template.php'
+    exception-code: 'Array to string conversion'
+[2024-10-18 2:43:58]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'carte@index',
+        2 => array(),
+    )
+    exception-line: 350
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\vendor\twig\twig\src\Template.php'
+    exception-code: 'Array to string conversion'
+[2024-10-18 2:43:58]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'carte@index',
+        2 => array(),
+    )
+    exception-line: 350
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\vendor\twig\twig\src\Template.php'
+    exception-code: 'Array to string conversion'
+[2024-10-18 2:44:10]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'carte@index',
+        2 => array(),
+    )
+    exception-line: 350
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\vendor\twig\twig\src\Template.php'
+    exception-code: 'Array to string conversion'
+[2024-10-18 2:44:47]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'carte@index',
+        2 => array(),
+    )
+    exception-line: 350
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\vendor\twig\twig\src\Template.php'
+    exception-code: 'Array to string conversion'
+[2024-10-18 2:44:48]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'carte@index',
+        2 => array(),
+    )
+    exception-line: 350
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\vendor\twig\twig\src\Template.php'
+    exception-code: 'Array to string conversion'
+[2024-10-18 2:44:52]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'carte@index',
+        2 => array(),
+    )
+    exception-line: 350
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\vendor\twig\twig\src\Template.php'
+    exception-code: 'Array to string conversion'
+[2024-10-18 2:45:21]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'carte@index',
+        2 => array(),
+    )
+    exception-line: 350
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\vendor\twig\twig\src\Template.php'
+    exception-code: 'Array to string conversion'
+[2024-10-18 2:45:33]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'carte@index',
+        2 => array(),
+    )
+    exception-line: 350
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\vendor\twig\twig\src\Template.php'
+    exception-code: 'Array to string conversion'
+[2024-10-18 2:45:35]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'carte@index',
+        2 => array(),
+    )
+    exception-line: 350
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\vendor\twig\twig\src\Template.php'
+    exception-code: 'Array to string conversion'
+[2024-10-18 2:45:43]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'carte@index',
+        2 => array(),
+    )
+    exception-line: 350
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\vendor\twig\twig\src\Template.php'
+    exception-code: 'Array to string conversion'
+[2024-10-18 2:50:30]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'carte@index',
+        2 => array(),
+    )
+    exception-line: 36
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\src\Controller\CarteController.php'
+    exception-code: 'Attempt to read property "valeurs_choix1" on array'
+[2024-10-18 2:54:07]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'carte@index',
+        2 => array(),
+    )
+    exception-line: 36
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\src\Controller\CarteController.php'
+    exception-code: 'Attempt to read property "valeurs_choix1" on array'
+[2024-10-18 3:03:06]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'carte@index',
+        2 => array(),
+    )
+    exception-line: 37
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\src\Controller\CarteController.php'
+    exception-code: 'Attempt to read property "valeurs_choix1" on array'
+[2024-10-18 3:04:28]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'carte@index',
+        2 => array(),
+    )
+    exception-line: 38
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\src\Controller\CarteController.php'
+    exception-code: 'Attempt to read property "valeurs_choix1" on array'
+[2024-10-18 3:04:32]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'carte@index',
+        2 => array(),
+    )
+    exception-line: 38
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\src\Controller\CarteController.php'
+    exception-code: 'Attempt to read property "valeurs_choix1" on array'
+[2024-10-18 3:13:09]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'carte@index',
+        2 => array(),
+    )
+    exception-line: 234
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\src\Model\Model.php'
+    exception-code: 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'db.reignswebapp.admin' doesn't exist'
+[2024-10-18 12:12:30]	[ALERT]	404 - commande non existante :: /assetscss/style.css
+[2024-10-18 12:12:31]	[ALERT]	404 - commande non existante :: /assetscss/style.css
+[2024-10-18 12:12:32]	[ALERT]	404 - commande non existante :: /assetscss/style.css
+[2024-10-18 12:12:43]	[ALERT]	404 - commande non existante :: /assetscss/style.css
+[2024-10-18 12:12:44]	[ALERT]	404 - commande non existante :: /assetscss/style.css
+[2024-10-18 12:12:45]	[ALERT]	404 - commande non existante :: /assetscss/style.css
+[2024-10-18 12:14:06]	[ALERT]	404 - commande non existante :: /assetsassets/css/style.css
+[2024-10-18 12:14:06]	[ALERT]	404 - commande non existante :: /assetsassets/css/style.css
+[2024-10-18 12:14:06]	[ALERT]	404 - commande non existante :: /assetsassets/css/style.css
+[2024-10-18 12:14:07]	[ALERT]	404 - commande non existante :: /assetsassets/css/style.css
+[2024-10-18 12:14:07]	[ALERT]	404 - commande non existante :: /assetsassets/css/style.css
+[2024-10-18 12:14:07]	[ALERT]	404 - commande non existante :: /assetsassets/css/style.css
+[2024-10-18 12:14:07]	[ALERT]	404 - commande non existante :: /assetsassets/css/style.css
+[2024-10-18 12:14:08]	[ALERT]	404 - commande non existante :: /assetsassets/css/style.css
+[2024-10-18 12:14:18]	[ALERT]	404 - commande non existante :: /assetsassets/css/style.css
+[2024-10-18 12:23:57]	[ALERT]	404 - commande non existante :: /assetsassets/js/script.js
+[2024-10-18 12:23:59]	[ALERT]	404 - commande non existante :: /assetsassets/js/script.js
+[2024-10-18 12:27:30]	[ALERT]	404 - commande non existante :: /assetsassets/js/script.js

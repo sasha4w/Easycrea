@@ -1,0 +1,361 @@
+[2024-10-16 0:01:52]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'createur@login',
+        2 => array(),
+    )
+    exception-line: 127
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\src\Controller\CreateurController.php'
+    exception-code: 'Undefined array key "id"'
+[2024-10-16 0:02:10]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'createur@login',
+        2 => array(),
+    )
+    exception-line: 127
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\src\Controller\CreateurController.php'
+    exception-code: 'Undefined array key "id"'
+[2024-10-16 0:13:46]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'createur@index',
+        2 => array(),
+    )
+    exception-line: 26
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\src\Controller\CreateurController.php'
+    exception-code: 'Undefined array key "ad_mail_createur"'
+[2024-10-16 0:13:49]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'createur@index',
+        2 => array(),
+    )
+    exception-line: 26
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\src\Controller\CreateurController.php'
+    exception-code: 'Undefined array key "ad_mail_createur"'
+[2024-10-16 0:13:51]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'createur@index',
+        2 => array(),
+    )
+    exception-line: 26
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\src\Controller\CreateurController.php'
+    exception-code: 'Undefined array key "ad_mail_createur"'
+[2024-10-16 0:13:53]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'createur@index',
+        2 => array(),
+    )
+    exception-line: 26
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\src\Controller\CreateurController.php'
+    exception-code: 'Undefined array key "ad_mail_createur"'
+[2024-10-16 0:45:14]	[ALERT]	404 - commande non existante :: /administrateurs/ajouter
+[2024-10-16 10:50:44]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'createur@login',
+        2 => array(),
+    )
+    exception-line: 109
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\src\Controller\CreateurController.php'
+    exception-code: 'Undefined variable $nom_createur'
+[2024-10-16 10:51:43]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'createur@login',
+        2 => array(),
+    )
+    exception-line: 109
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\src\Controller\CreateurController.php'
+    exception-code: 'Undefined variable $nom_createur'
+[2024-10-16 11:07:57]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'createur@login',
+        2 => array(),
+    )
+    exception-line: 114
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\src\Controller\CreateurController.php'
+    exception-code: 'Undefined variable $id_createur'
+[2024-10-16 11:16:26]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'administrateur@login',
+        2 => array(),
+    )
+    exception-line: 112
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\src\Controller\AdministrateurController.php'
+    exception-code: 'Undefined variable $adminnistrateur'
+[2024-10-16 11:16:56]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'administrateur@login',
+        2 => array(),
+    )
+    exception-line: 112
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\src\Controller\AdministrateurController.php'
+    exception-code: 'Array to string conversion'
+[2024-10-16 11:17:15]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'administrateur@login',
+        2 => array(),
+    )
+    exception-line: 112
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\src\Controller\AdministrateurController.php'
+    exception-code: 'Undefined array key "id_admin"'
+[2024-10-16 11:18:44]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'administrateur@index',
+        2 => array(),
+    )
+    exception-line: 26
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\src\Controller\AdministrateurController.php'
+    exception-code: 'compact(): Undefined variable $ad_mail_admini'
+[2024-10-16 11:18:48]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'administrateur@index',
+        2 => array(),
+    )
+    exception-line: 26
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\src\Controller\AdministrateurController.php'
+    exception-code: 'compact(): Undefined variable $ad_mail_admini'
+[2024-10-16 11:55:11]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'deck@create',
+        2 => array(),
+    )
+    exception-line: 17
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\src\View\decks\create.html.twig'
+    exception-code: 'An exception has been thrown during the rendering of a template ("DateTime::__construct(): Failed to parse time string (after) at position 0 (a): The timezone could not be found in the database").'
+[2024-10-16 11:55:28]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'deck@create',
+        2 => array(),
+    )
+    exception-line: 17
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\src\View\decks\create.html.twig'
+    exception-code: 'An exception has been thrown during the rendering of a template ("DateTime::__construct(): Failed to parse time string (after) at position 0 (a): The timezone could not be found in the database").'
+[2024-10-16 11:55:33]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'carte@index',
+        2 => array(),
+    )
+    exception-line: 227
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\vendor\twig\twig\src\Loader\FilesystemLoader.php'
+    exception-code: 'Unable to find template "cartes/index.html.twig" (looked into: C:\xampp\htdocs\ReignsWebapp\src\View).'
+[2024-10-16 11:55:39]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'deck@create',
+        2 => array(),
+    )
+    exception-line: 17
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\src\View\decks\create.html.twig'
+    exception-code: 'An exception has been thrown during the rendering of a template ("DateTime::__construct(): Failed to parse time string (after) at position 0 (a): The timezone could not be found in the database").'
+[2024-10-16 11:56:16]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'deck@create',
+        2 => array(),
+    )
+    exception-line: 17
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\src\View\decks\create.html.twig'
+    exception-code: 'An exception has been thrown during the rendering of a template ("DateTime::__construct(): Failed to parse time string (after) at position 0 (a): The timezone could not be found in the database").'
+[2024-10-16 11:56:56]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'deck@create',
+        2 => array(),
+    )
+    exception-line: 17
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\src\View\decks\create.html.twig'
+    exception-code: 'An exception has been thrown during the rendering of a template ("DateTime::__construct(): Failed to parse time string (after) at position 0 (a): The timezone could not be found in the database").'
+[2024-10-16 11:58:26]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'deck@create',
+        2 => array(),
+    )
+    exception-line: 17
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\src\View\decks\create.html.twig'
+    exception-code: 'An exception has been thrown during the rendering of a template ("DateTime::__construct(): Failed to parse time string (after) at position 0 (a): The timezone could not be found in the database").'
+[2024-10-16 11:58:27]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'deck@create',
+        2 => array(),
+    )
+    exception-line: 17
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\src\View\decks\create.html.twig'
+    exception-code: 'An exception has been thrown during the rendering of a template ("DateTime::__construct(): Failed to parse time string (after) at position 0 (a): The timezone could not be found in the database").'
+[2024-10-16 11:58:28]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'deck@create',
+        2 => array(),
+    )
+    exception-line: 17
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\src\View\decks\create.html.twig'
+    exception-code: 'An exception has been thrown during the rendering of a template ("DateTime::__construct(): Failed to parse time string (after) at position 0 (a): The timezone could not be found in the database").'
+[2024-10-16 11:58:37]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'carte@index',
+        2 => array(),
+    )
+    exception-line: 227
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\vendor\twig\twig\src\Loader\FilesystemLoader.php'
+    exception-code: 'Unable to find template "cartes/index.html.twig" (looked into: C:\xampp\htdocs\ReignsWebapp\src\View).'
+[2024-10-16 11:58:43]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'deck@create',
+        2 => array(),
+    )
+    exception-line: 17
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\src\View\decks\create.html.twig'
+    exception-code: 'An exception has been thrown during the rendering of a template ("DateTime::__construct(): Failed to parse time string (after) at position 0 (a): The timezone could not be found in the database").'
+[2024-10-16 11:59:40]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'deck@create',
+        2 => array(),
+    )
+    exception-line: 17
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\src\View\decks\create.html.twig'
+    exception-code: 'An exception has been thrown during the rendering of a template ("DateTime::__construct(): Failed to parse time string (after) at position 0 (a): The timezone could not be found in the database").'
+[2024-10-16 11:59:49]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'deck@create',
+        2 => array(),
+    )
+    exception-line: 17
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\src\View\decks\create.html.twig'
+    exception-code: 'An exception has been thrown during the rendering of a template ("DateTime::__construct(): Failed to parse time string (after) at position 0 (a): The timezone could not be found in the database").'
+[2024-10-16 12:02:41]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'deck@create',
+        2 => array(),
+    )
+    exception-line: 17
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\src\View\decks\create.html.twig'
+    exception-code: 'An exception has been thrown during the rendering of a template ("DateTime::__construct(): Failed to parse time string (after) at position 0 (a): The timezone could not be found in the database").'
+[2024-10-16 12:02:42]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'deck@create',
+        2 => array(),
+    )
+    exception-line: 17
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\src\View\decks\create.html.twig'
+    exception-code: 'An exception has been thrown during the rendering of a template ("DateTime::__construct(): Failed to parse time string (after) at position 0 (a): The timezone could not be found in the database").'
+[2024-10-16 12:02:43]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'deck@create',
+        2 => array(),
+    )
+    exception-line: 17
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\src\View\decks\create.html.twig'
+    exception-code: 'An exception has been thrown during the rendering of a template ("DateTime::__construct(): Failed to parse time string (after) at position 0 (a): The timezone could not be found in the database").'
+[2024-10-16 12:02:43]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'deck@create',
+        2 => array(),
+    )
+    exception-line: 17
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\src\View\decks\create.html.twig'
+    exception-code: 'An exception has been thrown during the rendering of a template ("DateTime::__construct(): Failed to parse time string (after) at position 0 (a): The timezone could not be found in the database").'
+[2024-10-16 12:02:44]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'deck@create',
+        2 => array(),
+    )
+    exception-line: 17
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\src\View\decks\create.html.twig'
+    exception-code: 'An exception has been thrown during the rendering of a template ("DateTime::__construct(): Failed to parse time string (after) at position 0 (a): The timezone could not be found in the database").'
+[2024-10-16 12:02:44]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'deck@create',
+        2 => array(),
+    )
+    exception-line: 17
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\src\View\decks\create.html.twig'
+    exception-code: 'An exception has been thrown during the rendering of a template ("DateTime::__construct(): Failed to parse time string (after) at position 0 (a): The timezone could not be found in the database").'
+[2024-10-16 12:02:44]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'deck@create',
+        2 => array(),
+    )
+    exception-line: 17
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\src\View\decks\create.html.twig'
+    exception-code: 'An exception has been thrown during the rendering of a template ("DateTime::__construct(): Failed to parse time string (after) at position 0 (a): The timezone could not be found in the database").'
+[2024-10-16 12:02:44]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'deck@create',
+        2 => array(),
+    )
+    exception-line: 17
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\src\View\decks\create.html.twig'
+    exception-code: 'An exception has been thrown during the rendering of a template ("DateTime::__construct(): Failed to parse time string (after) at position 0 (a): The timezone could not be found in the database").'
+[2024-10-16 12:02:44]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'deck@create',
+        2 => array(),
+    )
+    exception-line: 17
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\src\View\decks\create.html.twig'
+    exception-code: 'An exception has been thrown during the rendering of a template ("DateTime::__construct(): Failed to parse time string (after) at position 0 (a): The timezone could not be found in the database").'
+[2024-10-16 19:58:35]	[ALERT]	404 - commande non existante :: /decks/effacer/
+[2024-10-16 20:01:24]	[ALERT]	404 - commande non existante :: /decks/effacer/
+[2024-10-16 20:04:21]	[ALERT]	404 - commande non existante :: /decks/effacer5
+[2024-10-16 20:05:06]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'deck@delete',
+        2 => array(
+            'id' => '5',
+        ),
+    )
+    exception-line: 230
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\src\Model\Model.php'
+    exception-code: 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'id' in 'where clause''
+[2024-10-16 20:10:16]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'deck@delete',
+        2 => array(
+            'id' => '5',
+        ),
+    )
+    exception-line: 239
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\src\Model\Model.php'
+    exception-code: 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'id' in 'where clause''
+[2024-10-16 20:14:30]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'deck@delete',
+        2 => array(
+            'id' => '5',
+        ),
+    )
+    exception-line: 230
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\src\Model\Model.php'
+    exception-code: 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'id' in 'where clause''

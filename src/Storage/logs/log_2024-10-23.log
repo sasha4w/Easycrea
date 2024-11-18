@@ -1,0 +1,42 @@
+[2024-10-23 15:03:00]	[ALERT]	404 - commande non existante :: /createurs/assets/css/style.css
+[2024-10-23 15:03:00]	[ALERT]	404 - commande non existante :: /createurs/assets/js/script.js
+[2024-10-23 15:03:18]	[ALERT]	404 - commande non existante :: /cartes/ajouter/assets/css/style.css
+[2024-10-23 15:10:21]	[ALERT]	404 - commande non existante :: /cartes/ajouter/assets/css/style.css
+[2024-10-23 15:11:28]	[ALERT]	404 - commande non existante :: /createurs/assets/css/style.css
+[2024-10-23 15:11:28]	[ALERT]	404 - commande non existante :: /createurs/assets/js/script.js
+[2024-10-23 15:12:00]	[ALERT]	404 - commande non existante :: /cartes/ajouter/assets/css/style.css
+[2024-10-23 15:12:02]	[ALERT]	404 - commande non existante :: /cartes/ajouter/assets/css/style.css
+[2024-10-23 15:12:03]	[ALERT]	404 - commande non existante :: /cartes/ajouter/assets/css/style.css
+[2024-10-23 15:12:03]	[ALERT]	404 - commande non existante :: /cartes/ajouter/assets/css/style.css
+[2024-10-23 15:12:04]	[ALERT]	404 - commande non existante :: /cartes/ajouter/assets/css/style.css
+[2024-10-23 15:12:04]	[ALERT]	404 - commande non existante :: /cartes/ajouter/assets/css/style.css
+[2024-10-23 15:12:05]	[ALERT]	404 - commande non existante :: /cartes/ajouter/assets/css/style.css
+[2024-10-23 15:12:05]	[ALERT]	404 - commande non existante :: /cartes/ajouter/assets/css/style.css
+[2024-10-23 15:12:06]	[ALERT]	404 - commande non existante :: /cartes/ajouter/assets/css/style.css
+[2024-10-23 15:12:06]	[ALERT]	404 - commande non existante :: /cartes/ajouter/assets/css/style.css
+[2024-10-23 15:12:07]	[ALERT]	404 - commande non existante :: /cartes/ajouter/assets/css/style.css
+[2024-10-23 15:12:07]	[ALERT]	404 - commande non existante :: /cartes/ajouter/assets/css/style.css
+[2024-10-23 15:12:08]	[ALERT]	404 - commande non existante :: /cartes/ajouter/assets/css/style.css
+[2024-10-23 21:14:51]	[ALERT]	404 - commande non existante :: /administrateurs/assets/css/style.css
+[2024-10-23 21:14:51]	[ALERT]	404 - commande non existante :: /administrateurs/assets/js/script.js
+[2024-10-23 21:15:00]	[ALERT]	404 - commande non existante :: /cartes/ajouter/assets/css/style.css
+[2024-10-23 21:15:39]	[ALERT]	404 - commande non existante :: /createurs/assets/css/style.css
+[2024-10-23 21:15:39]	[ALERT]	404 - commande non existante :: /createurs/assets/js/script.js
+[2024-10-23 21:16:04]	[ALERT]	404 - commande non existante :: /createurs/assets/js/script.js
+[2024-10-23 21:16:04]	[ALERT]	404 - commande non existante :: /createurs/assets/css/style.css
+[2024-10-23 21:16:35]	[ALERT]	404 - commande non existante :: /createurs/assets/css/style.css
+[2024-10-23 21:16:35]	[ALERT]	404 - commande non existante :: /createurs/assets/js/script.js
+[2024-10-23 21:46:03]	[ALERT]	404 - commande non existante :: /cartes/ajouter/assets/css/style.css
+[2024-10-23 21:47:29]	[ALERT]	404 - commande non existante :: /createurs/assets/css/style.css
+[2024-10-23 21:47:29]	[ALERT]	404 - commande non existante :: /createurs/assets/js/script.js
+[2024-10-23 21:47:47]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'createur@create',
+        2 => array(),
+    )
+    exception-line: 230
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\src\Model\Model.php'
+    exception-code: 'SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'patrick@gmail.com' for key 'ad_mail_createur_unique''
+[2024-10-23 21:47:47]	[ALERT]	404 - commande non existante :: /createurs/assets/css/style.css
+[2024-10-23 21:47:47]	[ALERT]	404 - commande non existante :: /createurs/assets/js/script.js

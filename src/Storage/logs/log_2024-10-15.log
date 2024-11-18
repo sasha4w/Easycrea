@@ -1,0 +1,138 @@
+[2024-10-15 1:30:07]	[ALERT]	500 - le contrôleur App\Controller\ControllerController n'existe pas
+[2024-10-15 1:30:42]	[ALERT]	404 - commande non existante :: /administrateurs/signin
+[2024-10-15 1:39:37]	[ALERT]	404 - commande non existante :: /createurs/
+[2024-10-15 1:40:13]	[ALERT]	404 - commande non existante :: /createurs/
+[2024-10-15 1:40:34]	[ALERT]	404 - commande non existante :: /createurs/
+[2024-10-15 1:40:39]	[ALERT]	404 - commande non existante :: /administrateurs/
+[2024-10-15 1:41:17]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'administrateur@index',
+        2 => array(),
+    )
+    exception-line: 234
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\src\Model\Model.php'
+    exception-code: 'SQLSTATE[42S02]: Base table or view not found: 1932 Table 'db.reignswebapp.administrateur' doesn't exist in engine'
+[2024-10-15 1:42:30]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'administrateur@index',
+        2 => array(),
+    )
+    exception-line: 234
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\src\Model\Model.php'
+    exception-code: 'SQLSTATE[42S02]: Base table or view not found: 1932 Table 'db.reignswebapp.administrateur' doesn't exist in engine'
+[2024-10-15 1:42:32]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'administrateur@index',
+        2 => array(),
+    )
+    exception-line: 234
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\src\Model\Model.php'
+    exception-code: 'SQLSTATE[42S02]: Base table or view not found: 1932 Table 'db.reignswebapp.administrateur' doesn't exist in engine'
+[2024-10-15 1:46:10]	[ALERT]	404 - commande non existante :: /administrateurs
+[2024-10-15 1:46:14]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'administrateur@index',
+        2 => array(),
+    )
+    exception-line: 234
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\src\Model\Model.php'
+    exception-code: 'SQLSTATE[42S02]: Base table or view not found: 1932 Table 'db.reignswebapp.administrateur' doesn't exist in engine'
+[2024-10-15 1:49:42]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'administrateur@index',
+        2 => array(),
+    )
+    exception-line: 234
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\src\Model\Model.php'
+    exception-code: 'SQLSTATE[42S02]: Base table or view not found: 1932 Table 'db.reignswebapp.administrateur' doesn't exist in engine'
+[2024-10-15 1:53:14]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'administrateur@index',
+        2 => array(),
+    )
+    exception-line: 234
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\src\Model\Model.php'
+    exception-code: 'SQLSTATE[42S02]: Base table or view not found: 1932 Table 'db.reignswebapp.administrateur' doesn't exist in engine'
+[2024-10-15 1:53:27]	[ALERT]	404 - commande non existante :: /administrateurs/index.html.twig
+[2024-10-15 13:45:20]	[ALERT]	404 - commande non existante :: /createurs
+[2024-10-15 13:49:44]	[ALERT]	404 - commande non existante :: /createurs/create
+[2024-10-15 13:50:16]	[ALERT]	404 - commande non existante :: /createurs/create
+[2024-10-15 14:00:05]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'createur@create',
+        2 => array(),
+    )
+    exception-line: 34
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\src\View\createurs\create.html.twig'
+    exception-code: 'Unknown "endblock" tag.'
+[2024-10-15 14:00:15]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'createur@create',
+        2 => array(),
+    )
+    exception-line: 34
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\src\View\createurs\create.html.twig'
+    exception-code: 'Unknown "endblock" tag.'
+[2024-10-15 14:32:36]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'createur@create',
+        2 => array(),
+    )
+    exception-line: 7
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\src\View\createurs\create.html.twig'
+    exception-code: 'Unknown "csrf_token" function.'
+[2024-10-15 14:32:55]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'createur@create',
+        2 => array(),
+    )
+    exception-line: 7
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\src\View\createurs\create.html.twig'
+    exception-code: 'Unknown "csrf_token" function.'
+[2024-10-15 14:33:00]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'createur@create',
+        2 => array(),
+    )
+    exception-line: 7
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\src\View\createurs\create.html.twig'
+    exception-code: 'Unknown "csrf_token" function.'
+[2024-10-15 14:33:10]	[ALERT]	404 - commande non existante :: /createurs/login
+[2024-10-15 14:33:12]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'createur@create',
+        2 => array(),
+    )
+    exception-line: 7
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\src\View\createurs\create.html.twig'
+    exception-code: 'Unknown "csrf_token" function.'
+[2024-10-15 14:35:45]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'createur@create',
+        2 => array(),
+    )
+    exception-line: 7
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\src\View\createurs\create.html.twig'
+    exception-code: 'Unknown "csrf_token" function.'
+[2024-10-15 14:47:07]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'createur@create',
+        2 => array(),
+    )
+    exception-line: 45
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\src\Controller\CreateurController.php'
+    exception-code: 'Undefined array key "password"'

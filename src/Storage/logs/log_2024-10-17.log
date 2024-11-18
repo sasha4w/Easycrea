@@ -1,0 +1,138 @@
+[2024-10-17 1:30:21]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'carte@index',
+        2 => array(),
+    )
+    exception-line: 27
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\src\Controller\CarteController.php'
+    exception-code: 'compact(): Undefined variable $isLoggedIn'
+[2024-10-17 1:32:08]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'carte@index',
+        2 => array(),
+    )
+    exception-line: 27
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\src\Controller\CarteController.php'
+    exception-code: 'compact(): Undefined variable $isLoggedIn'
+[2024-10-17 1:32:12]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'carte@index',
+        2 => array(),
+    )
+    exception-line: 27
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\src\Controller\CarteController.php'
+    exception-code: 'compact(): Undefined variable $isLoggedIn'
+[2024-10-17 1:33:10]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'carte@index',
+        2 => array(),
+    )
+    exception-line: 5
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\src\View\cartes\index.html.twig'
+    exception-code: 'Unexpected token "punctuation" of value "|" ("name" expected).'
+[2024-10-17 1:33:19]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'carte@index',
+        2 => array(),
+    )
+    exception-line: 5
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\src\View\cartes\index.html.twig'
+    exception-code: 'Unexpected token "punctuation" of value "|" ("name" expected).'
+[2024-10-17 21:39:50]	[ALERT]	404 - commande non existante :: /cartes/ajouter/4
+[2024-10-17 22:39:38]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'carte@create',
+        2 => array(
+            'deckId' => '4',
+        ),
+    )
+    exception-line: 58
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\src\Controller\CarteController.php'
+    exception-code: 'Undefined array key "valeurs_choix2"'
+[2024-10-17 23:02:22]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'carte@index',
+        2 => array(),
+    )
+    exception-line: 230
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\src\Model\Model.php'
+    exception-code: 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'deck.id_createur' in 'where clause''
+[2024-10-17 23:11:46]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'carte@index',
+        2 => array(),
+    )
+    exception-line: 55
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\src\View\cartes\index.html.twig'
+    exception-code: 'Unexpected "endblock" tag (expecting closing tag for the "if" tag defined near line 6).'
+[2024-10-17 23:11:50]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'carte@index',
+        2 => array(),
+    )
+    exception-line: 55
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\src\View\cartes\index.html.twig'
+    exception-code: 'Unexpected "endblock" tag (expecting closing tag for the "if" tag defined near line 6).'
+[2024-10-17 23:18:37]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'carte@index',
+        2 => array(),
+    )
+    exception-line: 41
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\src\Controller\CarteController.php'
+    exception-code: 'Attempt to read property "id_deck" on array'
+[2024-10-17 23:20:13]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'carte@index',
+        2 => array(),
+    )
+    exception-line: 43
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\src\Controller\CarteController.php'
+    exception-code: 'Attempt to read property "id_deck" on array'
+[2024-10-17 23:20:16]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'carte@index',
+        2 => array(),
+    )
+    exception-line: 43
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\src\Controller\CarteController.php'
+    exception-code: 'Attempt to read property "id_deck" on array'
+[2024-10-17 23:24:46]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'carte@index',
+        2 => array(),
+    )
+    exception-line: 65
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\src\Controller\CarteController.php'
+    exception-code: 'compact(): Undefined variable $cartes'
+[2024-10-17 23:44:13]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'carte@index',
+        2 => array(),
+    )
+    exception-line: 56
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\src\View\cartes\index.html.twig'
+    exception-code: 'Unexpected "endif" tag (expecting closing tag for the "for" tag defined near line 33).'
+[2024-10-17 23:55:26]	[ALERT]	404 - erreur dans le processus de traitement du routage
+    routeInfo: array(
+        0 => 1,
+        1 => 'carte@index',
+        2 => array(),
+    )
+    exception-line: 80
+    exception-file: 'C:\xampp\htdocs\ReignsWebapp\src\View\cartes\index.html.twig'
+    exception-code: 'Unexpected "endif" tag (expecting closing tag for the "for" tag defined near line 79).'
