@@ -18,99 +18,115 @@ class CarteController extends Controller
      */
     public function index()
     {
-        // iniatialisation des variables
+        // Détecter le rôle de l'utilisateur
         $isLoggedInAsAdmin = isset($_SESSION['ad_mail_admin']);
         $isLoggedInAsCreateur = isset($_SESSION['ad_mail_createur']);
-        $ad_mail_admin = $isLoggedInAsAdmin ? $_SESSION['ad_mail_admin'] : null;
-        $nom_createur = $isLoggedInAsCreateur ? $_SESSION['nom_createur'] : null;
-        $id_createur = $isLoggedInAsCreateur ? (int)$_SESSION['id_createur'] : null;
-
-        // Initialiser les variables
+        
+        // Initialiser les variables communes
         $decksInfos = [];
-        $cartes = [];  // Initialiser la variable cartes
-        $cartesByDeck = []; // Initialiser la variable cartesByDeck
-        $currentTime = (new DateTime())->format('Y-m-d H:i:s'); // Date formatée en chaîne
+        $cartesByDeck = [];
+        $currentTime = (new DateTime())->format('Y-m-d H:i:s');
 
-        // Si l'utilisateur est un administrateur, récupérer les decks
         if ($isLoggedInAsAdmin) {
-            $decksInfos = Carte::getInstance()->findAllWithDecksAdmin();
-            $cartes = Carte::getInstance()->findAll(); // Ici, on récupère toutes les cartes
-    
-            // Décoder les valeurs des choix pour chaque carte
-            foreach ($cartes as &$carte) {
-                // Si carte est un tableau, on la traite comme un tableau
-                if (is_array($carte)) {
-                    $carte['valeurs_choix1'] = json_decode($carte['valeurs_choix1'], true);
-                    $carte['valeurs_choix2'] = json_decode($carte['valeurs_choix2'], true);
-                } else {
-                    // Sinon, on la traite comme un objet
-                    $carte->valeurs_choix1 = json_decode($carte->valeurs_choix1, true);
-                    $carte->valeurs_choix2 = json_decode($carte->valeurs_choix2, true);
-                }
-            }
-    
-            // Grouper les cartes par deck
-            foreach ($decksInfos as $deckInfo) {
-                $deckId = (int)(is_object($deckInfo) ? $deckInfo->id_deck : $deckInfo['id_deck']);
-                $cartesByDeck[$deckId] = array_filter($cartes, function($carte) use ($deckId) {
-                    return (is_object($carte) ? $carte->id_deck : $carte['id_deck']) == $deckId; // Vérifier si carte est un objet ou tableau
-                });
-    
-                // Récupérer la carte aléatoire pour le deck
-                $carteAleatoire = Carte::getInstance()->getOrAssignRandomCard($deckId);
-    
-                // Assigner la carte aléatoire à chaque carte du deck
-                foreach ($cartesByDeck[$deckId] as &$carte) {
-                    if (is_object($carte)) {
-                        $carte->carteAleatoire = $carteAleatoire; // Ajouter la carte aléatoire à chaque objet de carte
-                    } else {
-                        $carte['carteAleatoire'] = $carteAleatoire; // Ajouter la carte aléatoire à chaque tableau de carte
-                    }
-                }
-            }
+            $decksInfos = $this->getDecksForAdmin();
+            $cartesByDeck = $this->getCartesGroupedByDeckForAdmin($decksInfos);
         }
-    
+
         if ($isLoggedInAsCreateur) {
-            // Récupérer les decks pour le créateur
-            $decksInfos = Carte::getInstance()->findAllWithDecksCreateur();
-    
-            foreach ($decksInfos as $deckInfo) {
-                $deckId = (int)(is_object($deckInfo) ? $deckInfo->id_deck : $deckInfo['id_deck']); // Forcer le type à int
-    
-                // Récupérer les cartes par deck et créateur
-                $cartesByDeck[$deckId] = Carte::getInstance()->findByDeckAndCreateur($deckId, $id_createur);
-    
-                // Décoder les valeurs JSON des choix pour chaque carte
-                foreach ($cartesByDeck[$deckId] as &$carte) {
-                    if (is_array($carte)) {
-                        // Utiliser la notation tableau
-                        $carte['valeurs_choix1'] = json_decode($carte['valeurs_choix1'], true);
-                        $carte['valeurs_choix2'] = json_decode($carte['valeurs_choix2'], true);
-                    } else {
-                        // Utiliser la notation objet
-                        $carte->valeurs_choix1 = json_decode($carte->valeurs_choix1, true);
-                        $carte->valeurs_choix2 = json_decode($carte->valeurs_choix2, true);
-                    }
-                }
-    
-                // Récupérer la carte aléatoire pour le deck
-                $carteAleatoire = Carte::getInstance()->getOrAssignRandomCard($deckId);
-    
-                // Assigner la carte aléatoire à chaque carte du deck
-                foreach ($cartesByDeck[$deckId] as &$carte) {
-                    if (is_object($carte)) {
-                        $carte->carteAleatoire = $carteAleatoire; // Ajouter la carte aléatoire à chaque objet de carte
-                    } else {
-                        $carte['carteAleatoire'] = $carteAleatoire; // Ajouter la carte aléatoire à chaque tableau de carte
-                    }
+            $id_createur = (int)$_SESSION['id_createur'];
+            $decksInfos = $this->getDecksForCreateur($id_createur);
+            $cartesByDeck = $this->getCartesGroupedByDeckForCreateur($decksInfos, $id_createur);
+        }
+
+        $this->display('cartes/index.html.twig', compact(
+            'decksInfos', 
+            'cartesByDeck', 
+            'isLoggedInAsAdmin', 
+            'isLoggedInAsCreateur', 
+            'currentTime'
+        ));
+    }
+
+    /**
+     * Récupère les decks pour l'administrateur.
+     */
+    private function getDecksForAdmin(): array
+    {
+        return Carte::getInstance()->findAllWithDecksAdmin();
+    }
+
+    /**
+     * Récupère les decks pour un créateur spécifique.
+     */
+    private function getDecksForCreateur(int $id_createur): array
+    {
+        return Carte::getInstance()->findAllWithDecksCreateur();
+    }
+
+    /**
+     * Groupe les cartes par deck pour un administrateur.
+     */
+    private function getCartesGroupedByDeckForAdmin(array $decksInfos): array
+    {
+        $cartes = Carte::getInstance()->findAll(); // Récupérer toutes les cartes
+        $this->decodeCardChoices($cartes); // Décoder les choix JSON
+        return $this->groupCartesByDeck($decksInfos, $cartes);
+    }
+
+    /**
+     * Groupe les cartes par deck pour un créateur spécifique.
+     */
+    private function getCartesGroupedByDeckForCreateur(array $decksInfos, int $id_createur): array
+    {
+        $cartesByDeck = [];
+        foreach ($decksInfos as $deckInfo) {
+            $deckId = (int)($deckInfo['id_deck'] ?? $deckInfo->id_deck);
+            $cartesByDeck[$deckId] = Carte::getInstance()->findByDeckAndCreateur($deckId, $id_createur);
+            $this->decodeCardChoices($cartesByDeck[$deckId]);
+        }
+        return $cartesByDeck;
+    }
+
+    /**
+     * Décodage des choix JSON des cartes (modification directe sur la référence).
+     */
+    private function decodeCardChoices(array &$cartes): void
+    {
+        foreach ($cartes as &$carte) {
+            if (is_array($carte)) {
+                $carte['valeurs_choix1'] = json_decode($carte['valeurs_choix1'], true);
+                $carte['valeurs_choix2'] = json_decode($carte['valeurs_choix2'], true);
+            } elseif (is_object($carte)) {
+                $carte->valeurs_choix1 = json_decode($carte->valeurs_choix1, true);
+                $carte->valeurs_choix2 = json_decode($carte->valeurs_choix2, true);
+            }
+        }
+    }
+
+    /**
+     * Regroupe les cartes par deck.
+     */
+    private function groupCartesByDeck(array $decksInfos, array $cartes): array
+    {
+        $cartesByDeck = [];
+        foreach ($decksInfos as $deckInfo) {
+            $deckId = (int)($deckInfo['id_deck'] ?? $deckInfo->id_deck);
+            $cartesByDeck[$deckId] = array_filter($cartes, function ($carte) use ($deckId) {
+                return (is_object($carte) ? $carte->id_deck : $carte['id_deck']) == $deckId;
+            });
+
+            // Récupérer et assigner la carte aléatoire
+            $carteAleatoire = Carte::getInstance()->getOrAssignRandomCard($deckId);
+            foreach ($cartesByDeck[$deckId] as &$carte) {
+                if (is_object($carte)) {
+                    $carte->carteAleatoire = $carteAleatoire;
+                } else {
+                    $carte['carteAleatoire'] = $carteAleatoire;
                 }
             }
         }
-    
-        // Dans les vues TWIG, on peut utiliser les variables
-        $this->display('cartes/index.html.twig', compact('decksInfos', 'cartesByDeck', 'cartes', 'isLoggedInAsAdmin', 'isLoggedInAsCreateur', 'ad_mail_admin', 'nom_createur', 'currentTime'));
+        return $cartesByDeck;
     }
-    
     
     
 
